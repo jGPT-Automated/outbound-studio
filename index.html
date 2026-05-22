@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outbound Studio — Build Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #08090c;
+  --surface: #0f1117;
+  --surface-2: #161820;
+  --border: rgba(255,255,255,0.08);
+  --text: #e8e6e1;
+  --text-muted: rgba(232,230,225,0.45);
+  --accent: #C9A84C;
+  --accent-dim: rgba(201,168,76,0.12);
+  --green: #22c55e;
+  --green-dim: rgba(34,197,94,0.12);
+  --blue: #3b82f6;
+  --blue-dim: rgba(59,130,246,0.12);
+  --red: #ef4444;
+  --red-dim: rgba(239,68,68,0.12);
+  --yellow: #f59e0b;
+  --yellow-dim: rgba(245,158,11,0.12);
+  --purple: #a855f7;
+  --purple-dim: rgba(168,85,247,0.12);
+  --gray-dim: rgba(255,255,255,0.06);
+
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius: 10px;
+  --radius-sm: 6px;
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(8,9,12,0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 clamp(20px,5vw,60px);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.4); }
+}
+
+.nav-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  align-items: center;
+}
+
+.nav-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* HERO */
+.hero {
+  padding: clamp(100px,14vw,160px) clamp(20px,5vw,60px) clamp(60px,8vw,100px);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; left: -100px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; right: 0;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(59,130,246,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(44px,8vw,96px);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  margin-bottom: 28px;
+}
+
+.hero-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: clamp(15px,1.8vw,18px);
+  color: var(--text-muted);
+  max-width: 480px;
+  margin-bottom: 52px;
+  line-height: 1.65;
+}
+
+/* STATS STRIP */
+.stats-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  max-width: 660px;
+}
+
+.stat-cell {
+  flex: 1 1 120px;
+  padding: 22px 28px;
+  border-right: 1px solid var(--border);
+}
+
+.stat-cell:last-child { border-right: none; }
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(30px,4vw,46px);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: var(--font-mono);
+}
+
+/* SECTION */
+.section {
+  padding: clamp(56px,7vw,90px) clamp(20px,5vw,60px);
+}
+
+.section-divider {
+  border-bottom: 1px solid var(--border);
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px,2.8vw,30px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.section-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+/* PIPELINE STAGES BAR */
+.pipeline-stages {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.stage {
+  flex: 1;
+  padding: 16px 14px;
+  border-right: 1px solid var(--border);
+  text-align: center;
+}
+
+.stage:last-child { border-right: none; }
+
+.stage-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.stage-count {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text-muted);
+}
+
+.stage-count.s-active { color: var(--accent); }
+.stage-count.s-blocked { color: var(--red); }
+.stage-count.s-pitching { color: var(--purple); }
+.stage-count.s-live { color: var(--green); }
+.stage-count.s-building { color: var(--yellow); }
+.stage-count.s-demo { color: var(--blue); }
+
+/* VERTICALS */
+.verticals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.vertical-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s;
+}
+
+.vertical-chip:hover { border-color: rgba(255,255,255,0.14); }
+
+.vertical-name {
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+}
+
+.vertical-count {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.04em;
+}
+
+/* BUILD CARDS GRID */
+.builds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 18px;
+}
+
+.build-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.25s;
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.build-card:hover {
+  border-color: rgba(255,255,255,0.14);
+  transform: translateY(-2px) !important;
+}
+
+.card-header {
+  padding: 20px 22px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-identity { flex: 1; min-width: 0; }
+
+.card-vertical {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 7px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 5px;
+}
+
+.card-location {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* STATUS BADGE */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.badge-live   { background: var(--green-dim);  color: var(--green);  }
+.badge-live .badge-dot   { background: var(--green);  animation: pulse-dot 2s infinite; }
+
+.badge-pitching { background: var(--purple-dim); color: var(--purple); }
+.badge-pitching .badge-dot { background: var(--purple); }
+
+.badge-demo   { background: var(--blue-dim);   color: var(--blue);   }
+.badge-demo .badge-dot   { background: var(--blue);   }
+
+.badge-blocked { background: var(--red-dim);  color: var(--red);   }
+.badge-blocked .badge-dot { background: var(--red);  animation: pulse-dot 1.2s infinite; }
+
+.badge-building { background: var(--yellow-dim); color: var(--yellow); }
+.badge-building .badge-dot { background: var(--yellow); animation: pulse-dot 1.5s infinite; }
+
+.badge-prospect { background: var(--gray-dim); color: var(--text-muted); }
+.badge-prospect .badge-dot { background: var(--text-muted); }
+
+/* CARD BODY */
+.card-body { padding: 16px 22px 20px; }
+
+.blocker-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.18);
+  border-radius: var(--radius-sm);
+  font-size: 11.5px;
+  color: #f87171;
+  line-height: 1.45;
+  margin-bottom: 14px;
+}
+
+.blocker-alert svg { flex-shrink: 0; margin-top: 1px; }
+
+.card-links {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 14px;
+}
+
+.card-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 11px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.18s, background 0.18s;
+}
+
+.card-link:hover {
+  border-color: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.03);
+}
+
+.link-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.link-url {
+  font-size: 11px;
+  color: var(--text);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  max-width: 190px;
+}
+
+.card-link-disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+.card-note {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  padding-top: 13px;
+  border-top: 1px solid var(--border);
+}
+
+.card-note strong { color: var(--text); font-weight: 500; }
+
+/* DATE TAG */
+.date-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 7px;
+  margin-right: 6px;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 22px clamp(20px,5vw,60px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* RESPONSIVE */
+@media (max-width: 760px) {
+  .builds-grid { grid-template-columns: 1fr; }
+
+  .stats-strip { flex-direction: column; }
+  .stat-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .stat-cell:last-child { border-bottom: none; }
+
+  .pipeline-stages { flex-wrap: wrap; }
+  .stage { flex: 1 1 calc(33% - 1px); border-bottom: 1px solid var(--border); }
+
+  .nav-meta { display: none; }
+
+  .link-url { max-width: 150px; }
+
+  .verticals-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .stage { flex: 1 1 calc(50% - 1px); }
+  .verticals-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-dot"></div>
+    Outbound Studio
+  </div>
+  <div class="nav-meta">
+    <div class="nav-meta-item">
+      <i data-lucide="calendar" style="width:12px;height:12px"></i>
+      May 2026
+    </div>
+    <div class="nav-meta-item">
+      <i data-lucide="map-pin" style="width:12px;height:12px"></i>
+      Houston, TX
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Build Tracker &mdash; Run 2 in progress</div>
+  <h1 class="hero-headline">Every build.<br>Every status.<br><em>One place.</em></h1>
+  <p class="hero-sub">Prospect demos, live client sites, pitch docs, and pipeline stages &mdash; tracked and linkable across every vertical and run.</p>
+
+  <div class="stats-strip">
+    <div class="stat-cell">
+      <div class="stat-num" data-count-seq="5,1,3,5">5</div>
+      <div class="stat-label">Total Builds</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num" data-count-seq="4,1,2,4">4</div>
+      <div class="stat-label">Verticals</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num" data-count-seq="1,0,1">1</div>
+      <div class="stat-label">Live Clients</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num" data-count-seq="3,0,2,3">3</div>
+      <div class="stat-label">Demos Live</div>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE OVERVIEW -->
+<section class="section section-divider">
+  <div class="section-header">
+    <h2 class="section-title">Pipeline Overview</h2>
+    <span class="section-meta">Updated May 22, 2026</span>
+  </div>
+
+  <div class="pipeline-stages">
+    <div class="stage">
+      <div class="stage-label">Prospect</div>
+      <div class="stage-count">0</div>
+    </div>
+    <div class="stage">
+      <div class="stage-label">In Build</div>
+      <div class="stage-count s-building">1</div>
+    </div>
+    <div class="stage">
+      <div class="stage-label">Demo Ready</div>
+      <div class="stage-count s-demo">2</div>
+    </div>
+    <div class="stage">
+      <div class="stage-label">Blocked</div>
+      <div class="stage-count s-blocked">1</div>
+    </div>
+    <div class="stage">
+      <div class="stage-label">Pitching</div>
+      <div class="stage-count s-pitching">1</div>
+    </div>
+    <div class="stage">
+      <div class="stage-label">Live Client</div>
+      <div class="stage-count s-live">1</div>
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-top:0; margin-bottom:16px;">
+    <h3 style="font-family:var(--font-display);font-size:15px;font-weight:600;letter-spacing:-0.02em;color:var(--text-muted)">Verticals Covered</h3>
+  </div>
+  <div class="verticals-grid">
+    <div class="vertical-chip">
+      <span class="vertical-name"><i data-lucide="scissors" style="width:14px;height:14px;color:var(--accent)"></i> Barbershop</span>
+      <span class="vertical-count">3</span>
+    </div>
+    <div class="vertical-chip">
+      <span class="vertical-name"><i data-lucide="droplets" style="width:14px;height:14px;color:var(--accent)"></i> Power Washing</span>
+      <span class="vertical-count">1</span>
+    </div>
+    <div class="vertical-chip">
+      <span class="vertical-name"><i data-lucide="paint-roller" style="width:14px;height:14px;color:var(--accent)"></i> House Painting</span>
+      <span class="vertical-count">1</span>
+    </div>
+    <div class="vertical-chip">
+      <span class="vertical-name"><i data-lucide="bug" style="width:14px;height:14px;color:var(--accent)"></i> Pest Control</span>
+      <span class="vertical-count">1</span>
+    </div>
+  </div>
+</section>
+
+<!-- ALL BUILDS -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">All Builds</h2>
+    <span class="section-meta">5 tracked &middot; Houston TX &middot; Run 1&ndash;2</span>
+  </div>
+
+  <div class="builds-grid">
+
+    <!-- 1: BNR Power Washing -->
+    <div class="build-card">
+      <div class="card-header">
+        <div class="card-identity">
+          <div class="card-vertical">
+            <i data-lucide="droplets" style="width:11px;height:11px"></i>
+            Power Washing &nbsp;&middot;&nbsp; Run 1
+          </div>
+          <div class="card-name">BNR Power Washing</div>
+          <div class="card-location">
+            <i data-lucide="map-pin" style="width:10px;height:10px"></i>
+            Houston, TX (client)
+          </div>
+        </div>
+        <span class="badge badge-pitching">
+          <span class="badge-dot"></span>
+          Pitching
+        </span>
+      </div>
+      <div class="card-body">
+        <div class="card-links">
+          <a href="https://bnrassociatesllc.com" target="_blank" class="card-link">
+            <span class="link-label"><i data-lucide="globe" style="width:11px;height:11px"></i> Live Site</span>
+            <span class="link-url">bnrassociatesllc.com</span>
+          </a>
+          <a href="https://bnr-power-washing.vercel.app" target="_blank" class="card-link">
+            <span class="link-label"><i data-lucide="triangle" style="width:11px;height:11px"></i> Vercel Deploy</span>
+            <span class="link-url">bnr-power-washing.vercel.app</span>
+          </a>
+          <div class="card-link card-link-disabled">
+            <span class="link-label"><i data-lucide="file-text" style="width:11px;height:11px"></i> Phase II Proposal</span>
+            <span class="link-url">auth-gated</span>
+          </div>
+        </div>
+        <p class="card-note">
+          <span class="date-tag">May 13 2026</span>
+          Phase II proposal sent. Follow-up gate: WhatsApp nudge to (832) 401-0741 if no reply by May 18&ndash;20. Locked tiers: Foundation $397 &middot; Growth $797 &middot; Dominate $1,497/mo. 866 five-star reviews not yet AEO-surfaced.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2: ORTAHAUS -->
+    <div class="build-card">
+      <div class="card-header">
+        <div class="card-identity">
+          <div class="card-vertical">
+            <i data-lucide="scissors" style="width:11px;height:11px"></i>
+            Barbershop &nbsp;&middot;&nbsp; Run 1
+          </div>
+          <div class="card-name">ORTAHAUS</div>
+          <div class="card-location">
+            <i data-lucide="map-pin" style="width:10px;height:10px"></i>
+            Heights, Houston TX
+          </div>
+        </div>
+        <span class="badge badge-demo">
+          <span class="badge-dot"></span>
+          Demo Ready
+        </span>
+      </div>
+      <div class="card-body">
+        <div class="card-links">
+          <a href="https://os-barbershops-ortahaus-agenticjess-projects.vercel.app" target="_blank" class="card-link">
+            <span class="link-label"><i data-lucide="monitor" style="width:11px;height:11px"></i> Demo Site</span>
+            <span class="link-url">os-barbershops-ortahaus&hellip;</span>
+          </a>
+          <div class="card-link card-link-disabled">
+            <span class="link-label"><i data-lucide="file-text" style="width:11px;height:11px"></i> Pitch Doc</span>
+            <span class="link-url">URL not captured</span>
+          </div>
+        </div>
+        <p class="card-note">
+          First barbershop vertical. Template basis for all subsequent barbershop builds. Heights neighborhood locked &mdash; no duplicate outreach per exclusivity rule. Outreach not yet sent.
+        </p>
+      </div>
+    </div>
+
+    <!-- 3: The Argyle League -->
+    <div class="build-card">
+      <div class="card-header">
+        <div class="card-identity">
+          <div class="card-vertical">
+            <i data-lucide="scissors" style="width:11px;height:11px"></i>
+            Barbershop &nbsp;&middot;&nbsp; Run 2
+          </div>
+          <div class="card-name">The Argyle League</div>
+          <div class="card-location">
+            <i data-lucide="map-pin" style="width:10px;height:10px"></i>
+            Montrose, Houston TX
+          </div>
+        </div>
+        <span class="badge badge-blocked">
+          <span class="badge-dot"></span>
+          Blocked
+        </span>
+      </div>
+      <div class="card-body">
+        <div class="blocker-alert">
+          <i data-lucide="alert-triangle" style="width:14px;height:14px"></i>
+          AEO fix required: llms.txt + robots.txt missing from Vercel deploy. Needs web-UI session to redeploy. Outreach HELD until cleared + AJ green-light.
+        </div>
+        <div class="card-links">
+          <a href="https://os-barb-argyle-league-agenticjess-projects.vercel.app" target="_blank" class="card-link">
+            <span class="link-label"><i data-lucide="monitor" style="width:11px;height:11px"></i> Demo Site</span>
+            <span class="link-url">43,666 bytes &middot; verified</span>
+          </a>
+          <a href="https://os-barb-argyle-league-pitch-agenticjess-projects.vercel.app" target="_blank" class="card-link">
+            <span class="link-label"><i data-lucide="file-text" style="width:11px;height:11px"></i> Pitch Doc</span>
+            <span class="link-url">19,216 bytes &middot; verified</span>
+          </a>
+        </div>
+        <p class="card-note">
+          <span class="date-tag">May 22 2026</span>
+          Houston Press Best Barbershop 2017. 206 Yelp reviews, 4.5&starf;. ICP score: 92/100. Deep navy #0D1B2E palette. Sentinel: 12/14 checks passed.
+        </p>
+      </div>
+    </div>
+
+    <!-- 4: Prime House Painting -->
+    <div class="build-card">
+      <div class="card-header">
+        <div class="card-identity">
+          <div class="card-vertical">
+            <i data-lucide="paint-roller" style="width:11px;height:11px"></i>
+            House Painting &nbsp;&middot;&nbsp; Run 1
+          </div>
+          <div class="card-name">Prime House Painting</div>
+          <div class="card-location">
+            <i data-lucide="map-pin" style="width:10px;height:10px"></i>
+            Houston, TX
+          </div>
+        </div>
+        <span class="badge badge-demo">
+          <span class="badge-dot"></span>
+          Demo Ready
+        </span>
+      </div>
+      <div class="card-body">
+        <div class="card-links">
+          <div class="card-link card-link-disabled">
+            <span class="link-label"><i data-lucide="monitor" style="width:11px;height:11px"></i> Demo Site</span>
+            <span class="link-url">URL needed</span>
+          </div>
+          <div class="card-link card-link-disabled">
+            <span class="link-label"><i data-lucide="file-text" style="width:11px;height:11px"></i> Pitch Doc</span>
+            <span class="link-url">URL needed</span>
+          </div>
+        </div>
+        <p class="card-note">
+          <span class="date-tag">May 11 2026</span>
+          Demo site + pitch drafted and shipped. URLs not captured in thread history &mdash; check pipeline sheet <code style="font-family:var(--font-mono);font-size:11px;background:var(--surface-2);padding:1px 5px;border-radius:3px;">1glBguQd&hellip;</code> or original build thread for links.
+        </p>
+      </div>
+    </div>
+
+    <!-- 5: Natran Green Pest Control -->
+    <div class="build-card">
+      <div class="card-header">
+        <div class="card-identity">
+          <div class="card-vertical">
+            <i data-lucide="bug" style="width:11px;height:11px"></i>
+            Pest Control &nbsp;&middot;&nbsp; Run 2
+          </div>
+          <div class="card-name">Natran Green</div>
+          <div class="card-location">
+            <i data-lucide="map-pin" style="width:10px;height:10px"></i>
+            NW Houston, TX 77092
+          </div>
+        </div>
+        <span class="badge badge-building">
+          <span class="badge-dot"></span>
+          In Build
+        </span>
+      </div>
+      <div class="card-body">
+        <div class="card-links">
+          <div class="card-link card-link-disabled">
+            <span class="link-label"><i data-lucide="monitor" style="width:11px;height:11px"></i> Demo Site</span>
+            <span class="link-url">in progress</span>
+          </div>
+          <div class="card-link card-link-disabled">
+            <span class="link-label"><i data-lucide="file-text" style="width:11px;height:11px"></i> Pitch Doc</span>
+            <span class="link-url">in progress</span>
+          </div>
+        </div>
+        <p class="card-note">
+          Eco/organic differentiator. Assigned Build B, Run 2. AI wedge: Pest-ID Photo Upload (Gemini Vision, forked from BNR quote tool). Sage green + clay palette. Forge + Sentinel own this.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="nav-dot" style="width:6px;height:6px;animation:none;opacity:0.5"></div>
+    Outbound Studio &middot; JAW_x
+  </div>
+  <div class="footer-meta">Houston TX &middot; May 22, 2026 &middot; Run 2 in progress</div>
+</footer>
+
+<script>
+  lucide.createIcons();
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero entrance
+  gsap.set(['.hero-eyebrow','.hero-headline','.hero-sub','.stats-strip'], { opacity: 0, y: 28 });
+  const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  heroTl
+    .to('.hero-eyebrow',  { opacity:1, y:0, duration:0.55, delay:0.15 })
+    .to('.hero-headline', { opacity:1, y:0, duration:0.65 }, '-=0.3')
+    .to('.hero-sub',      { opacity:1, y:0, duration:0.55 }, '-=0.4')
+    .to('.stats-strip',   { opacity:1, y:0, duration:0.55 }, '-=0.35');
+
+  // Build cards scroll reveal
+  gsap.utils.toArray('.build-card').forEach((card, i) => {
+    gsap.to(card, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+      delay: (i % 3) * 0.07,
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 90%',
+        toggleActions: 'play none none none'
+      }
+    });
+  });
+
+  // Vertical chips stagger
+  gsap.from('.vertical-chip', {
+    opacity: 0, y: 12, duration: 0.4, stagger: 0.06, ease: 'power2.out',
+    scrollTrigger: { trigger: '.verticals-grid', start: 'top 88%' }
+  });
+
+  // Counter animation (static → dip → climb)
+  document.querySelectorAll('[data-count-seq]').forEach(el => {
+    const seq = el.getAttribute('data-count-seq').split(',').map(Number);
+    el.textContent = seq[0];
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 82%',
+      once: true,
+      onEnter: () => {
+        let i = 1;
+        const tick = () => {
+          if (i < seq.length) {
+            el.textContent = seq[i++];
+            setTimeout(tick, 110);
+          }
+        };
+        setTimeout(tick, 350);
+      }
+    });
+  });
+</script>
+</body>
+</html>
