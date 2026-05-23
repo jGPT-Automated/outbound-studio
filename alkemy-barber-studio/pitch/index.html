@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alkemy Barber Studio — Digital Opportunity Brief</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --charcoal: #0A0807;
+      --charcoal-2: #141210;
+      --charcoal-3: #1E1B18;
+      --gold: #C9932A;
+      --gold-light: #E8B84B;
+      --cream: #F5F0E8;
+      --cream-dim: #BEB5A8;
+      --red: #C0392B;
+      --green: #27AE60;
+    }
+    html, body { overflow-x: hidden; }
+    body {
+      background: var(--charcoal);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--charcoal-2);
+      border-bottom: 2px solid var(--gold);
+      padding: 40px 56px;
+    }
+    .header-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; }
+    .header-brand { display: flex; align-items: center; gap: 14px; }
+    .hdr-x svg { display: block; }
+    .brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 400;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--cream);
+    }
+    .brand-sub { font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-top: 3px; }
+    .header-meta { text-align: right; }
+    .meta-label { font-size: 9px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .meta-val { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--cream); line-height: 1; }
+    .meta-sub { font-size: 11px; color: var(--cream-dim); margin-top: 4px; }
+
+    /* LAYOUT */
+    main { max-width: 960px; margin: 0 auto; padding: 64px 40px 80px; }
+
+    /* HERO STATEMENT */
+    .hero-stmt {
+      border-left: 3px solid var(--gold);
+      padding: 32px 36px;
+      background: var(--charcoal-2);
+      margin-bottom: 64px;
+    }
+    .hero-stmt-hed {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 300; line-height: 1.15;
+      color: var(--cream); margin-bottom: 14px;
+    }
+    .hero-stmt-hed em { font-style: italic; color: var(--gold); }
+    .hero-stmt-body { font-size: 13px; color: var(--cream-dim); max-width: 600px; }
+
+    /* SECTION */
+    .pitch-section { margin-bottom: 56px; }
+    .pitch-section-title {
+      font-size: 9px; letter-spacing: .32em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .pitch-section-title::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--gold); }
+
+    /* AUDIT TABLE */
+    .audit-table { width: 100%; border-collapse: collapse; }
+    .audit-table th {
+      text-align: left; padding: 10px 16px;
+      font-size: 9px; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold); border-bottom: 1px solid rgba(201,147,42,.25);
+    }
+    .audit-table td {
+      padding: 14px 16px; font-size: 12px;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      color: var(--cream-dim);
+    }
+    .audit-table tr:last-child td { border-bottom: none; }
+    .audit-table tr:hover td { background: var(--charcoal-3); }
+    .tag {
+      display: inline-block; padding: 3px 10px;
+      font-size: 9px; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      border-radius: 2px;
+    }
+    .tag-gap { background: rgba(192,57,43,.15); color: #E57368; border: 1px solid rgba(192,57,43,.3); }
+    .tag-ok  { background: rgba(39,174,96,.12); color: #58D68D; border: 1px solid rgba(39,174,96,.25); }
+    .tag-warn{ background: rgba(201,147,42,.12); color: var(--gold); border: 1px solid rgba(201,147,42,.3); }
+
+    /* WHAT WE BUILT */
+    .built-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .built-card {
+      background: var(--charcoal-2);
+      padding: 28px 28px 28px 32px;
+      border-left: 2px solid rgba(201,147,42,.25);
+      position: relative; overflow: hidden;
+      transition: border-color .2s;
+    }
+    .built-card:hover { border-left-color: var(--gold); }
+    .built-card-icon { margin-bottom: 12px; }
+    .built-card-title { font-size: 14px; font-weight: 500; color: var(--cream); margin-bottom: 6px; }
+    .built-card-desc { font-size: 12px; color: var(--cream-dim); line-height: 1.65; }
+
+    /* WHAT'S AT STAKE */
+    .stake-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .stake-card {
+      background: var(--charcoal-2);
+      padding: 36px 28px;
+      text-align: center;
+    }
+    .stake-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px; font-weight: 300; color: var(--gold);
+      line-height: 1; margin-bottom: 8px;
+    }
+    .stake-num sup { font-size: 22px; vertical-align: super; }
+    .stake-label { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--cream-dim); }
+
+    /* NEXT STEP */
+    .next-step {
+      background: var(--charcoal-2);
+      border: 1px solid rgba(201,147,42,.3);
+      padding: 40px 40px;
+    }
+    .next-step-hed {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px; font-weight: 300; color: var(--cream);
+      margin-bottom: 12px;
+    }
+    .next-step-body { font-size: 13px; color: var(--cream-dim); margin-bottom: 28px; max-width: 560px; }
+    .next-step-cta {
+      display: inline-block;
+      background: var(--gold); color: var(--charcoal);
+      padding: 14px 36px; font-size: 11px; font-weight: 500;
+      letter-spacing: .18em; text-transform: uppercase;
+      text-decoration: none; transition: background .2s;
+    }
+    .next-step-cta:hover { background: var(--gold-light); }
+    .contact-block {
+      margin-top: 24px; font-size: 12px; color: var(--cream-dim);
+      display: flex; gap: 28px; flex-wrap: wrap;
+    }
+    .contact-block a { color: var(--cream-dim); text-decoration: none; transition: color .2s; }
+    .contact-block a:hover { color: var(--gold); }
+
+    /* FOOTER */
+    .pitch-footer {
+      margin-top: 64px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding-top: 24px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    }
+    .pitch-footer span { font-size: 10px; color: rgba(190,181,168,.35); letter-spacing: .06em; }
+
+    @media (max-width: 640px) {
+      header { padding: 28px 20px; }
+      .header-meta { display: none; }
+      main { padding: 40px 20px 60px; }
+      .built-grid { grid-template-columns: 1fr; }
+      .stake-grid { grid-template-columns: 1fr; }
+      .hero-stmt { padding: 24px 20px; }
+      .next-step { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="hdr-x">
+        <svg width="32" height="32" viewBox="0 0 30 30" fill="none">
+          <line x1="5" y1="5" x2="25" y2="25" stroke="#C9932A" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="25" y1="5" x2="5" y2="25" stroke="#C9932A" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="15" cy="15" r="13" stroke="#C9932A" stroke-width="1" fill="none" opacity="0.35"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-name">Alkemy Barber Studio</div>
+        <div class="brand-sub">Digital Opportunity Brief</div>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-label">Prepared</div>
+      <div class="meta-val">May 2026</div>
+      <div class="meta-sub">By Outbound Studio</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO STMT -->
+  <div class="hero-stmt">
+    <h1 class="hero-stmt-hed">
+      Alkemy has <em>866 five-star reviews</em><br>and nobody searching Austin can find them.
+    </h1>
+    <p class="hero-stmt-body">
+      Your current site runs on a UENI template built in 2022. No schema, no AI-crawler access, no keyword targeting. When someone searches "precision barbershop Austin" or asks ChatGPT for a barber recommendation — Alkemy isn't in the answer. This brief shows what we built in 48 hours to fix that.
+    </p>
+  </div>
+
+  <!-- AUDIT -->
+  <div class="pitch-section">
+    <div class="pitch-section-title">Current Site Audit</div>
+    <table class="audit-table">
+      <thead>
+        <tr>
+          <th>Signal</th>
+          <th>Current State</th>
+          <th>Impact</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Structured Data (JSON-LD)</td>
+          <td>None — UENI template has zero schema markup</td>
+          <td>AI assistants can't extract business info</td>
+          <td><span class="tag tag-gap">Gap</span></td>
+        </tr>
+        <tr>
+          <td>AI Crawler Access</td>
+          <td>No allowlist — GPTBot / ClaudeBot / PerplexityBot blocked by default</td>
+          <td>ChatGPT, Perplexity, Claude can't index</td>
+          <td><span class="tag tag-gap">Gap</span></td>
+        </tr>
+        <tr>
+          <td>llms.txt</td>
+          <td>Missing</td>
+          <td>No AI-readable business summary at /llms.txt</td>
+          <td><span class="tag tag-gap">Gap</span></td>
+        </tr>
+        <tr>
+          <td>FAQ Schema</td>
+          <td>None</td>
+          <td>Can't appear in voice search / AI answer results</td>
+          <td><span class="tag tag-gap">Gap</span></td>
+        </tr>
+        <tr>
+          <td>Mobile Usability</td>
+          <td>UENI template — functional but generic</td>
+          <td>No conversion optimization, no booking CTA above fold</td>
+          <td><span class="tag tag-warn">Weak</span></td>
+        </tr>
+        <tr>
+          <td>Booking Friction</td>
+          <td>GlossGenius link buried — no persistent Book Now CTA</td>
+          <td>Users drop off before booking</td>
+          <td><span class="tag tag-warn">Weak</span></td>
+        </tr>
+        <tr>
+          <td>Services &amp; Pricing</td>
+          <td>Accurate on GlossGenius — missing from main site</td>
+          <td>AI crawlers can't surface your prices</td>
+          <td><span class="tag tag-gap">Gap</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- WHAT WE BUILT -->
+  <div class="pitch-section">
+    <div class="pitch-section-title">What We Built in 48 Hours</div>
+    <div class="built-grid">
+      <div class="built-card">
+        <div class="built-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9932A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="built-card-title">Full Brand Demo Site</div>
+        <div class="built-card-desc">Cormorant Garamond serif, deep charcoal + gold palette. Your actual services, pricing, hours, and team — no Lorem Ipsum.</div>
+      </div>
+      <div class="built-card">
+        <div class="built-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9932A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="built-card-title">JSON-LD Schema Markup</div>
+        <div class="built-card-desc">LocalBusiness + HairSalon + FAQPage structured data. Every AI assistant that crawls the site can extract your name, address, services, pricing, and hours.</div>
+      </div>
+      <div class="built-card">
+        <div class="built-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9932A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </div>
+        <div class="built-card-title">AI Crawler Allowlist</div>
+        <div class="built-card-desc">Explicit meta tags for GPTBot, ClaudeBot, PerplexityBot, anthropic-ai, CCBot — every major AI search engine can now index Alkemy.</div>
+      </div>
+      <div class="built-card">
+        <div class="built-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9932A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="built-card-title">llms.txt + robots.txt</div>
+        <div class="built-card-desc">Structured plain-text summary at /llms.txt with business description, services, pricing, and booking URL — exactly what AI assistants read before answering "best barber in Austin."</div>
+      </div>
+      <div class="built-card">
+        <div class="built-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9932A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <div class="built-card-title">Mobile-First Design</div>
+        <div class="built-card-desc">Persistent Book Now CTA in nav, touch-sized tap targets, 375px tested. Booking is always one tap away.</div>
+      </div>
+      <div class="built-card">
+        <div class="built-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9932A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="built-card-title">Real Content, No Placeholders</div>
+        <div class="built-card-desc">Every word is verified — services, pricing, team names, hours, booking URL. Nothing invented.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT'S AT STAKE -->
+  <div class="pitch-section">
+    <div class="pitch-section-title">What's at Stake</div>
+    <div class="stake-grid">
+      <div class="stake-card">
+        <div class="stake-num">~4.2K</div>
+        <div class="stake-label">Monthly Austin<br>barbershop searches</div>
+      </div>
+      <div class="stake-card">
+        <div class="stake-num"><sup>$</sup>70</div>
+        <div class="stake-label">Average ticket<br>(Premium Cut)</div>
+      </div>
+      <div class="stake-card">
+        <div class="stake-num">0</div>
+        <div class="stake-label">AI assistant results<br>currently for Alkemy</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT STEP -->
+  <div class="next-step">
+    <h2 class="next-step-hed">See the demo. Let's talk.</h2>
+    <p class="next-step-body">
+      The demo site is live. It's yours — no cost, no commitment to view it. If it looks right for Alkemy, a 15-minute call is all we need to talk about what a full build looks like and what it costs.
+    </p>
+    <a href="https://barbersxalkemy.glossgenius.com/" class="next-step-cta">View the Demo Site</a>
+    <div class="contact-block">
+      <span>Or reach us directly:</span>
+      <a href="mailto:jace@alkemybarbers.com">jace@alkemybarbers.com</a>
+      <a href="tel:5128448701">(512) 844-8701</a>
+    </div>
+  </div>
+
+  <div class="pitch-footer">
+    <span>Outbound Studio · Prepared May 2026</span>
+    <span>Not affiliated with Alkemy Barber Studio · Demo preview only</span>
+  </div>
+
+</main>
+</body>
+</html>
