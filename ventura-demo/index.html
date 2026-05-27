@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ventura Lawn Care — Premium Lawn Service in Houston, TX</title>
+<meta name="description" content="Houston's most reliable lawn care. Grass cutting, edging, mulching, hedge trimming, leaf cleanup, and pressure washing. Serving Heights, Memorial, River Oaks. Book a free visit today.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://venturalandscapehouston.com/">
+<meta property="og:title" content="Ventura Lawn Care — Houston, TX">
+<meta property="og:description" content="Professional lawn care across Houston. Fast, skilled, and clean — guaranteed.">
+<meta property="og:image" content="https://www.landscapinginhoustontx.com/assets/lush-healthy-lawn-houston-tx.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "additionalType": "https://schema.org/LandscapeService",
+  "@id": "https://venturalandscapehouston.com/",
+  "name": "Ventura Lawn Care",
+  "description": "Professional lawn care services in Houston, TX. Grass cutting, edging, mulching, leaf cleanup, hedge trimming, and pressure washing. Motivated by passion, guaranteed clean work.",
+  "url": "https://venturalandscapehouston.com/",
+  "telephone": "+1-832-000-0000",
+  "email": "contact@venturalandscapehouston.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Houston",
+    "addressRegion": "TX",
+    "postalCode": "77008",
+    "addressCountry": "US"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 29.7604, "longitude": -95.3698 },
+  "areaServed": [
+    {"@type": "City", "name": "Houston", "sameAs": "https://www.wikidata.org/wiki/Q16555"},
+    {"@type": "Neighborhood", "name": "Houston Heights"},
+    {"@type": "Neighborhood", "name": "Memorial"},
+    {"@type": "Neighborhood", "name": "River Oaks"},
+    {"@type": "Neighborhood", "name": "Montrose"},
+    {"@type": "Neighborhood", "name": "Midtown"}
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Lawn Care Services",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Grass Cutting"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Edging"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Leaf Cleanup"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Mulching"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pressure Washing"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Hedge & Tree Trimming"}}
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "bestRating": "5",
+    "reviewCount": "47"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {"@type": "Rating", "ratingValue": "5"},
+      "author": {"@type": "Person", "name": "Nadine Delacruz"},
+      "reviewBody": "They are quick and efficient and leave me with a good looking yard."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {"@type": "Rating", "ratingValue": "5"},
+      "author": {"@type": "Person", "name": "Robert Greene"},
+      "reviewBody": "If you are looking for some awesome people to work with, these are the guys I highly recommend."
+    }
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "07:00",
+      "closes": "18:00"
+    }
+  ],
+  "priceRange": "$$",
+  "paymentAccepted": "Cash, Credit Card, Venmo, Zelle",
+  "knowsAbout": ["lawn care","grass cutting","edging","mulching","leaf cleanup","pressure washing","hedge trimming","Houston landscaping"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --bg: #040d06;
+  --surface: #08130a;
+  --surface-2: #0d1e0f;
+  --surface-3: #122414;
+  --border: rgba(220,238,212,0.07);
+  --border-strong: rgba(220,238,212,0.14);
+  --text: #dcefd4;
+  --text-muted: rgba(220,238,212,0.48);
+  --text-faint: rgba(220,238,212,0.28);
+  --primary: #4a8c5c;
+  --primary-light: #5fa870;
+  --primary-dim: rgba(74,140,92,0.14);
+  --primary-glow: rgba(74,140,92,0.08);
+  --gold: #b09040;
+  --font-display: 'Cormorant Garamond','Times New Roman',serif;
+  --font-body: 'Inter',system-ui,sans-serif;
+  --radius: 3px;
+  --nav-h: 64px;
+}
+
+html { scroll-behavior:smooth; overflow-x:hidden; }
+body {
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+  overflow-x:hidden;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─── UTILITIES ─────────────────────────────────────── */
+.eyebrow {
+  font-family:var(--font-body);
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+}
+.hairline { height:1px; background:var(--border); display:block; }
+.hairline-v { width:1px; background:var(--border); display:block; }
+.display { font-family:var(--font-display); font-weight:400; }
+.italic { font-style:italic; }
+.primary { color:var(--primary-light); }
+.fade-up { opacity:0; transform:translateY(28px); }
+.section-pad { padding:clamp(72px,10vw,140px) clamp(20px,6vw,80px); }
+
+/* grain overlay */
+.grain::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.035;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ─── NAVIGATION ─────────────────────────────────────── */
+nav {
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:100;
+  height:var(--nav-h);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 clamp(20px,5vw,64px);
+  background:rgba(4,13,6,.82);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+  transition:background .3s;
+}
+.nav-brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--font-display);
+  font-size:22px;
+  font-weight:400;
+  letter-spacing:-.01em;
+  color:var(--text);
+  text-decoration:none;
+}
+.nav-brand-icon {
+  width:32px;height:32px;
+  border:1px solid var(--primary);
+  border-radius:var(--radius);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--primary);
+}
+.nav-links {
+  display:flex;
+  align-items:center;
+  gap:clamp(20px,3vw,40px);
+  list-style:none;
+}
+.nav-links a {
+  font-size:13px;
+  font-weight:400;
+  color:var(--text-muted);
+  text-decoration:none;
+  letter-spacing:.015em;
+  transition:color .2s;
+}
+.nav-links a:hover { color:var(--text); }
+.nav-cta {
+  font-family:var(--font-body);
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--bg);
+  background:var(--primary);
+  padding:10px 22px;
+  border:none;
+  border-radius:var(--radius);
+  cursor:pointer;
+  text-decoration:none;
+  transition:background .2s;
+  white-space:nowrap;
+}
+.nav-cta:hover { background:var(--primary-light); }
+.nav-mobile-toggle { display:none; cursor:pointer; color:var(--text); background:none; border:none; }
+
+@media(max-width:760px){
+  .nav-links, .nav-cta { display:none; }
+  .nav-mobile-toggle { display:block; }
+}
+
+/* ─── HERO ─────────────────────────────────────── */
+#hero {
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+}
+.hero-img {
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 40%;
+  filter:saturate(.85) brightness(.7);
+}
+.hero-overlay {
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,
+    rgba(4,13,6,.96) 0%,
+    rgba(4,13,6,.65) 40%,
+    rgba(4,13,6,.25) 70%,
+    rgba(4,13,6,.1) 100%);
+}
+.hero-overlay-side {
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to right,
+    rgba(4,13,6,.8) 0%,
+    transparent 55%);
+}
+.hero-content {
+  position:relative;
+  max-width:1280px;
+  margin:0 auto;
+  width:100%;
+  padding:clamp(120px,18vw,200px) clamp(20px,6vw,80px) clamp(64px,8vw,96px);
+}
+.hero-eyebrow {
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:28px;
+}
+.hero-eyebrow .hairline { width:48px; }
+h1 {
+  font-family:var(--font-display);
+  font-size:clamp(52px,9vw,108px);
+  line-height:1.0;
+  letter-spacing:-.02em;
+  font-weight:400;
+  color:var(--text);
+  max-width:760px;
+  margin-bottom:28px;
+}
+.hero-sub {
+  font-size:clamp(15px,1.8vw,18px);
+  color:var(--text-muted);
+  font-weight:300;
+  max-width:440px;
+  line-height:1.7;
+  margin-bottom:44px;
+}
+.hero-ctas {
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  align-items:center;
+}
+.btn-primary {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--bg);
+  background:var(--primary);
+  padding:16px 32px;
+  border:none;
+  border-radius:var(--radius);
+  cursor:pointer;
+  text-decoration:none;
+  transition:background .2s,gap .2s;
+}
+.btn-primary:hover { background:var(--primary-light); gap:14px; }
+.btn-ghost {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  background:none;
+  border:1px solid var(--border-strong);
+  padding:15px 28px;
+  border-radius:var(--radius);
+  cursor:pointer;
+  text-decoration:none;
+  transition:color .2s,border-color .2s;
+}
+.btn-ghost:hover { color:var(--text); border-color:var(--text-muted); }
+
+/* ─── STATS BAR ─────────────────────────────────────── */
+#stats {
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.stats-inner {
+  max-width:1280px;
+  margin:0 auto;
+  padding:clamp(32px,4vw,48px) clamp(20px,6vw,80px);
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+}
+.stat-item {
+  padding:0 clamp(16px,3vw,40px);
+  text-align:center;
+  position:relative;
+}
+.stat-item:not(:last-child)::after {
+  content:'';
+  position:absolute;
+  right:0;top:10%;bottom:10%;
+  width:1px;
+  background:var(--border-strong);
+}
+.stat-number {
+  font-family:var(--font-display);
+  font-size:clamp(38px,6vw,68px);
+  line-height:1;
+  font-weight:300;
+  color:var(--text);
+  margin-bottom:8px;
+  letter-spacing:-.02em;
+}
+.stat-number em { font-style:normal; color:var(--primary-light); }
+.stat-label {
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+}
+
+/* ─── SERVICES ─────────────────────────────────────── */
+#services { background:var(--bg); }
+.section-header {
+  max-width:1280px;
+  margin:0 auto 56px;
+  padding:0 clamp(20px,6vw,80px);
+}
+.section-header.centered { text-align:center; }
+h2 {
+  font-family:var(--font-display);
+  font-size:clamp(36px,6vw,64px);
+  font-weight:400;
+  line-height:1.08;
+  letter-spacing:-.02em;
+  color:var(--text);
+  margin-top:16px;
+  margin-bottom:16px;
+}
+.section-sub {
+  font-size:15px;
+  color:var(--text-muted);
+  font-weight:300;
+  max-width:520px;
+  line-height:1.75;
+}
+.section-sub.center { margin:0 auto; }
+.services-grid {
+  max-width:1280px;
+  margin:0 auto;
+  padding:0 clamp(20px,6vw,80px);
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+}
+.service-card {
+  background:var(--bg);
+  padding:clamp(28px,3vw,44px);
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  transition:background .25s;
+  position:relative;
+  overflow:hidden;
+}
+.service-card:hover { background:var(--surface); }
+.service-card::after {
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:2px;
+  background:var(--primary);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .35s ease;
+}
+.service-card:hover::after { transform:scaleX(1); }
+.service-icon {
+  width:40px;height:40px;
+  background:var(--primary-dim);
+  border-radius:var(--radius);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--primary-light);
+  flex-shrink:0;
+}
+.service-title {
+  font-family:var(--font-display);
+  font-size:clamp(20px,2.2vw,26px);
+  font-weight:400;
+  letter-spacing:-.01em;
+  color:var(--text);
+}
+.service-desc {
+  font-size:14px;
+  color:var(--text-muted);
+  line-height:1.7;
+  font-weight:300;
+}
+
+@media(max-width:900px){ .services-grid { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:560px){ .services-grid { grid-template-columns:1fr; } }
+
+/* ─── WHY VENTURA ─────────────────────────────────────── */
+#why {
+  background:var(--surface);
+  position:relative;
+  overflow:hidden;
+}
+.why-img {
+  position:absolute;
+  right:-80px;top:0;bottom:0;
+  width:45%;
+  object-fit:cover;
+  opacity:.18;
+  filter:saturate(.5);
+}
+.why-inner {
+  max-width:1280px;
+  margin:0 auto;
+  padding:clamp(72px,10vw,140px) clamp(20px,6vw,80px);
+  position:relative;
+}
+.why-pillars {
+  margin-top:56px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:clamp(24px,4vw,56px);
+  max-width:860px;
+}
+.pillar-icon {
+  width:48px;height:48px;
+  border:1px solid var(--border-strong);
+  border-radius:var(--radius);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--primary-light);
+  margin-bottom:20px;
+}
+.pillar-title {
+  font-family:var(--font-display);
+  font-size:clamp(22px,2.5vw,28px);
+  font-weight:400;
+  letter-spacing:-.01em;
+  margin-bottom:10px;
+}
+.pillar-desc {
+  font-size:13.5px;
+  color:var(--text-muted);
+  line-height:1.75;
+  font-weight:300;
+}
+@media(max-width:700px){ .why-pillars { grid-template-columns:1fr; gap:32px; } .why-img { display:none; } }
+
+/* ─── REVIEWS ─────────────────────────────────────── */
+#reviews { background:var(--bg); }
+.reviews-grid {
+  max-width:1280px;
+  margin:0 auto;
+  padding:0 clamp(20px,6vw,80px);
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:clamp(16px,2vw,24px);
+}
+.review-card {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:calc(var(--radius)*2);
+  padding:clamp(24px,3vw,40px);
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  transition:border-color .2s;
+}
+.review-card:hover { border-color:var(--border-strong); }
+.stars {
+  display:flex;
+  gap:3px;
+  color:var(--gold);
+}
+.review-quote {
+  font-family:var(--font-display);
+  font-size:clamp(18px,2vw,22px);
+  line-height:1.5;
+  font-weight:300;
+  font-style:italic;
+  color:var(--text);
+  flex:1;
+}
+.review-quote::before { content:'\201C'; color:var(--primary); font-size:1.4em; line-height:0; }
+.review-author {
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+}
+@media(max-width:700px){ .reviews-grid { grid-template-columns:1fr; } }
+
+/* ─── SERVICE AREAS ─────────────────────────────────────── */
+#areas {
+  background:var(--surface);
+  border-top:1px solid var(--border);
+}
+.areas-inner {
+  max-width:1280px;
+  margin:0 auto;
+  padding:clamp(72px,10vw,120px) clamp(20px,6vw,80px);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(32px,6vw,80px);
+  align-items:start;
+}
+.areas-list {
+  margin-top:20px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px 24px;
+}
+.area-item {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+  color:var(--text-muted);
+  font-weight:300;
+}
+.area-dot {
+  width:5px;height:5px;
+  border-radius:50%;
+  background:var(--primary);
+  flex-shrink:0;
+}
+.areas-photo {
+  position:relative;
+  border-radius:calc(var(--radius)*2);
+  overflow:hidden;
+  aspect-ratio:4/3;
+}
+.areas-photo img {
+  width:100%;height:100%;
+  object-fit:cover;
+  filter:saturate(.7) brightness(.75);
+}
+.areas-photo-overlay {
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(74,140,92,.2) 0%,transparent 60%);
+}
+@media(max-width:760px){ .areas-inner { grid-template-columns:1fr; } .areas-photo { display:none; } }
+
+/* ─── AEO SECTION ─────────────────────────────────────── */
+#aeo {
+  background:var(--bg);
+  border-top:1px solid var(--border);
+}
+.aeo-inner {
+  max-width:1280px;
+  margin:0 auto;
+  padding:clamp(72px,10vw,120px) clamp(20px,6vw,80px);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(40px,6vw,100px);
+  align-items:center;
+}
+.aeo-copy h2 { max-width:520px; }
+.aeo-copy .section-sub { margin-top:4px; }
+.aeo-signals {
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.aeo-signal {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px 22px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  transition:border-color .2s;
+}
+.aeo-signal:hover { border-color:var(--primary); }
+.aeo-signal-icon {
+  width:36px;height:36px;
+  background:var(--primary-dim);
+  border-radius:var(--radius);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--primary-light);
+  flex-shrink:0;
+}
+.aeo-signal-label {
+  font-size:13px;
+  font-weight:500;
+  color:var(--text);
+  margin-bottom:2px;
+}
+.aeo-signal-desc {
+  font-size:12px;
+  color:var(--text-muted);
+  font-weight:300;
+}
+@media(max-width:760px){ .aeo-inner { grid-template-columns:1fr; } }
+
+/* ─── CTA ─────────────────────────────────────── */
+#cta {
+  background:var(--surface-2);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  position:relative;
+  overflow:hidden;
+}
+.cta-glow {
+  position:absolute;
+  top:-120px;left:50%;
+  transform:translateX(-50%);
+  width:600px;height:400px;
+  background:radial-gradient(ellipse,rgba(74,140,92,.12) 0%,transparent 70%);
+  pointer-events:none;
+}
+.cta-inner {
+  max-width:720px;
+  margin:0 auto;
+  padding:clamp(72px,10vw,120px) clamp(20px,6vw,40px);
+  text-align:center;
+  position:relative;
+}
+.cta-inner h2 { margin:16px 0 12px; }
+.cta-inner .section-sub { margin:0 auto 40px; }
+.cta-form {
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.cta-input {
+  flex:1;
+  min-width:220px;
+  max-width:320px;
+  background:var(--surface);
+  border:1px solid var(--border-strong);
+  border-radius:var(--radius);
+  padding:14px 18px;
+  font-family:var(--font-body);
+  font-size:14px;
+  color:var(--text);
+  outline:none;
+  transition:border-color .2s;
+}
+.cta-input::placeholder { color:var(--text-faint); }
+.cta-input:focus { border-color:var(--primary); }
+
+/* ─── FOOTER ─────────────────────────────────────── */
+footer {
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  padding:clamp(40px,6vw,72px) clamp(20px,6vw,80px);
+}
+.footer-inner {
+  max-width:1280px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:clamp(24px,4vw,48px);
+  margin-bottom:48px;
+}
+.footer-brand {
+  font-family:var(--font-display);
+  font-size:22px;
+  font-weight:400;
+  color:var(--text);
+  margin-bottom:12px;
+  display:block;
+}
+.footer-tagline {
+  font-size:13px;
+  color:var(--text-muted);
+  font-weight:300;
+  line-height:1.65;
+  max-width:220px;
+}
+.footer-col-title {
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--text-faint);
+  margin-bottom:16px;
+}
+.footer-links {
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.footer-links a {
+  font-size:13px;
+  color:var(--text-muted);
+  text-decoration:none;
+  font-weight:300;
+  transition:color .2s;
+}
+.footer-links a:hover { color:var(--text); }
+.footer-bottom {
+  max-width:1280px;
+  margin:0 auto;
+  padding-top:24px;
+  border-top:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.footer-copy {
+  font-size:12px;
+  color:var(--text-faint);
+  font-weight:300;
+}
+@media(max-width:760px){ .footer-inner { grid-template-columns:1fr; } }
+</style>
+</head>
+<body class="grain">
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-brand">
+    <div class="nav-brand-icon">
+      <i data-lucide="leaf" style="width:16px;height:16px;"></i>
+    </div>
+    Ventura
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#areas">Service Areas</a></li>
+    <li><a href="#cta">Contact</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta">Book a Visit</a>
+  <button class="nav-mobile-toggle" aria-label="Menu">
+    <i data-lucide="menu" style="width:22px;height:22px;"></i>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <img
+    class="hero-img"
+    src="https://www.landscapinginhoustontx.com/assets/lush-healthy-lawn-houston-tx.png"
+    alt="Lush green lawn maintained by Ventura Lawn Care in Houston TX"
+    width="1200"
+    height="685"
+    loading="eager"
+  >
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-side"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow fade-up">
+      <span class="hairline"></span>
+      <span class="eyebrow">Serving Houston Since 2019</span>
+    </div>
+    <h1 class="fade-up">
+      A lawn like<br>
+      <em class="primary italic">never before.</em>
+    </h1>
+    <p class="hero-sub fade-up">
+      Efficient, skilled, and clean — every visit, guaranteed. Stop sweating the yard work. We handle it.
+    </p>
+    <div class="hero-ctas fade-up">
+      <a href="#cta" class="btn-primary">
+        Book a Free Visit
+        <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+      </a>
+      <a href="tel:+18320000000" class="btn-ghost">
+        <i data-lucide="phone" style="width:14px;height:14px;"></i>
+        (832) 000-0000
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-inner">
+    <div class="stat-item fade-up">
+      <div class="stat-number"><span class="counter" data-count-seq="5,2,3,4,5" data-suffix="+">5</span><em>+</em></div>
+      <div class="stat-label">Years Active</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-number"><span class="counter" data-count-seq="200,80,120,160,200" data-suffix="+">200</span><em>+</em></div>
+      <div class="stat-label">Jobs Completed</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-number"><span class="counter" data-count-seq="4.9,4.2,4.5,4.7,4.9" data-decimals="1">4.9</span><em>&#9733;</em></div>
+      <div class="stat-label">Average Rating</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section-pad">
+  <div class="section-header fade-up">
+    <span class="eyebrow">What We Do</span>
+    <h2>Six services.<br>One crew. <em class="italic primary">Done right.</em></h2>
+    <p class="section-sub">From weekly mowing to full-property pressure washing — Ventura covers every inch.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon"><i data-lucide="scissors" style="width:18px;height:18px;"></i></div>
+      <div class="service-title">Grass Cutting</div>
+      <div class="service-desc">Precise, even cuts at the right height for Houston's climate. No scalping, no missed rows.</div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon"><i data-lucide="maximize-2" style="width:18px;height:18px;"></i></div>
+      <div class="service-title">Edging</div>
+      <div class="service-desc">Clean separation between lawn and hardscape. Every sidewalk, driveway, and bed edge defined sharply.</div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon"><i data-lucide="wind" style="width:18px;height:18px;"></i></div>
+      <div class="service-title">Leaf Cleanup</div>
+      <div class="service-desc">Full removal and haul-off. No blowing into beds or neighbors — everything goes.</div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon"><i data-lucide="layers" style="width:18px;height:18px;"></i></div>
+      <div class="service-title">Mulching</div>
+      <div class="service-desc">Fresh mulch application that retains moisture, suppresses weeds, and sharpens bed appearance.</div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon"><i data-lucide="droplets" style="width:18px;height:18px;"></i></div>
+      <div class="service-title">Pressure Washing</div>
+      <div class="service-desc">Driveways, sidewalks, patios, and fences. Houston's humidity creates buildup fast — we remove it all.</div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon"><i data-lucide="tree-pine" style="width:18px;height:18px;"></i></div>
+      <div class="service-title">Hedge &amp; Tree Trimming</div>
+      <div class="service-desc">Shaped hedges, pruned trees, cleared deadwood. Clean lines your neighbors will notice.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY VENTURA -->
+<section id="why">
+  <img
+    class="why-img"
+    src="https://www.grassnhome.com/wp-content/uploads/2024/05/Lawncare.jpg"
+    alt="Professional lawn care"
+    aria-hidden="true"
+  >
+  <div class="why-inner">
+    <div class="section-header fade-up" style="padding:0;max-width:100%;">
+      <span class="eyebrow">Why Choose Us</span>
+      <h2 style="max-width:500px;">Three standards.<br><em class="italic primary">No exceptions.</em></h2>
+    </div>
+    <div class="why-pillars">
+      <div class="fade-up">
+        <div class="pillar-icon"><i data-lucide="zap" style="width:20px;height:20px;"></i></div>
+        <div class="pillar-title">Fastest Work</div>
+        <p class="pillar-desc">Our crew is efficient and doesn't waste your time or theirs. We show up on schedule and finish strong.</p>
+      </div>
+      <div class="fade-up">
+        <div class="pillar-icon"><i data-lucide="award" style="width:20px;height:20px;"></i></div>
+        <div class="pillar-title">High Skill</div>
+        <p class="pillar-desc">Motivated by passion, not just a paycheck. Every technician knows Houston grass, soil, and seasonal demands.</p>
+      </div>
+      <div class="fade-up">
+        <div class="pillar-icon"><i data-lucide="shield-check" style="width:20px;height:20px;"></i></div>
+        <div class="pillar-title">Clean Work</div>
+        <p class="pillar-desc">Shortcuts are not an option. We blow off every surface, bag or haul off clippings, and leave zero trace.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="section-pad">
+  <div class="section-header centered fade-up">
+    <span class="eyebrow">Client Reviews</span>
+    <h2><em class="italic primary">Houston speaks</em> for itself.</h2>
+    <p class="section-sub center">Real customers, real feedback. Every visit is a chance to earn the next one.</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card fade-up">
+      <div class="stars">
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+      </div>
+      <p class="review-quote">They are quick and efficient and leave me with a good looking yard.</p>
+      <div class="review-author">Nadine Delacruz &mdash; Houston, TX</div>
+    </div>
+    <div class="review-card fade-up">
+      <div class="stars">
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+      </div>
+      <p class="review-quote">My neighbor was impressed! Thanks for always doing a great job.</p>
+      <div class="review-author">Joshua Boone &mdash; Houston, TX</div>
+    </div>
+    <div class="review-card fade-up">
+      <div class="stars">
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+      </div>
+      <p class="review-quote">If you are looking for some awesome people to work with, these are the guys. Their friendliness and result-driven approach are what I love.</p>
+      <div class="review-author">Robert Greene &mdash; Houston, TX</div>
+    </div>
+    <div class="review-card fade-up">
+      <div class="stars">
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+        <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+      </div>
+      <p class="review-quote">Thank you so much. My lawn looks awesome!</p>
+      <div class="review-author">Carmen Garcia &mdash; Houston, TX</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREAS -->
+<section id="areas">
+  <div class="areas-inner">
+    <div>
+      <span class="eyebrow fade-up">Where We Work</span>
+      <h2 class="fade-up">All across <em class="italic primary">Houston.</em></h2>
+      <p class="section-sub fade-up">From the Heights to Memorial, River Oaks to Midtown — if you're in Houston, we can be there.</p>
+      <div class="areas-list fade-up">
+        <div class="area-item"><span class="area-dot"></span>Houston Heights</div>
+        <div class="area-item"><span class="area-dot"></span>Memorial</div>
+        <div class="area-item"><span class="area-dot"></span>River Oaks</div>
+        <div class="area-item"><span class="area-dot"></span>Montrose</div>
+        <div class="area-item"><span class="area-dot"></span>Midtown</div>
+        <div class="area-item"><span class="area-dot"></span>Bellaire</div>
+        <div class="area-item"><span class="area-dot"></span>West U</div>
+        <div class="area-item"><span class="area-dot"></span>Oak Forest</div>
+        <div class="area-item"><span class="area-dot"></span>Garden Oaks</div>
+        <div class="area-item"><span class="area-dot"></span>Timbergrove</div>
+      </div>
+    </div>
+    <div class="areas-photo fade-up">
+      <img
+        src="https://greenprotexas.com/wp-content/uploads/2025/01/0c8c1b47fa8b7865a255ff62882e07ca-1024x682.jpg"
+        alt="Professional lawn care in Houston TX"
+        loading="lazy"
+        width="1024"
+        height="682"
+      >
+      <div class="areas-photo-overlay"></div>
+    </div>
+  </div>
+</section>
+
+<!-- AEO SECTION -->
+<section id="aeo">
+  <div class="aeo-inner">
+    <div class="aeo-copy">
+      <span class="eyebrow fade-up">AI-Search Ready</span>
+      <h2 class="fade-up">When Houston homeowners ask ChatGPT, <em class="italic primary">you appear.</em></h2>
+      <p class="section-sub fade-up" style="margin-top:12px;">
+        AI tools like ChatGPT and Perplexity now guide how Houston residents find local services. This site is built to show up there — not just on Google.
+      </p>
+    </div>
+    <div class="aeo-signals fade-up">
+      <div class="aeo-signal">
+        <div class="aeo-signal-icon"><i data-lucide="code-2" style="width:16px;height:16px;"></i></div>
+        <div>
+          <div class="aeo-signal-label">Structured Schema Markup</div>
+          <div class="aeo-signal-desc">JSON-LD LocalBusiness data AI crawlers read before your copy</div>
+        </div>
+      </div>
+      <div class="aeo-signal">
+        <div class="aeo-signal-icon"><i data-lucide="bot" style="width:16px;height:16px;"></i></div>
+        <div>
+          <div class="aeo-signal-label">AI-Crawler Allowlist</div>
+          <div class="aeo-signal-desc">GPTBot, ClaudeBot, PerplexityBot — all permitted via robots.txt</div>
+        </div>
+      </div>
+      <div class="aeo-signal">
+        <div class="aeo-signal-icon"><i data-lucide="file-text" style="width:16px;height:16px;"></i></div>
+        <div>
+          <div class="aeo-signal-label">llms.txt Published</div>
+          <div class="aeo-signal-desc">Plain-language business summary optimized for LLM comprehension</div>
+        </div>
+      </div>
+      <div class="aeo-signal">
+        <div class="aeo-signal-icon"><i data-lucide="map-pin" style="width:16px;height:16px;"></i></div>
+        <div>
+          <div class="aeo-signal-label">Local Intent Signals</div>
+          <div class="aeo-signal-desc">Neighborhood names, zip codes, and service area geo-data embedded</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-glow"></div>
+  <div class="cta-inner">
+    <span class="eyebrow fade-up">Get Started</span>
+    <h2 class="fade-up">Ready for a lawn like <em class="italic primary">never before?</em></h2>
+    <p class="section-sub center fade-up">Drop your number and we'll schedule a free walk-through — no contracts, no pressure.</p>
+    <div class="cta-form fade-up">
+      <input class="cta-input" type="tel" placeholder="Your phone number" aria-label="Phone number">
+      <a href="tel:+18320000000" class="btn-primary">
+        Get My Free Visit
+        <i data-lucide="calendar" style="width:15px;height:15px;"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <span class="footer-brand">Ventura Lawn Care</span>
+      <p class="footer-tagline">Efficient, skilled, and clean — serving Houston since 2019. Motivated by passion.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">Grass Cutting</a></li>
+        <li><a href="#services">Edging &amp; Cleanup</a></li>
+        <li><a href="#services">Mulching</a></li>
+        <li><a href="#services">Pressure Washing</a></li>
+        <li><a href="#services">Hedge &amp; Tree Trimming</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="tel:+18320000000">(832) 000-0000</a></li>
+        <li><a href="mailto:contact@venturalandscapehouston.com">contact@venturalandscapehouston.com</a></li>
+        <li><a href="#areas">Service Areas</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Ventura Lawn Care — Houston, TX. All rights reserved.</span>
+    <span class="footer-copy">Built for AI-search visibility.</span>
+  </div>
+</footer>
+
+<script>
+// Init Lucide icons
+lucide.createIcons();
+
+// GSAP ScrollTrigger animations
+gsap.registerPlugin(ScrollTrigger);
+
+document.querySelectorAll('.fade-up').forEach(el => {
+  gsap.to(el, {
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 88%',
+      toggleActions: 'play none none none'
+    },
+    opacity: 1,
+    y: 0,
+    duration: .9,
+    ease: 'power3.out'
+  });
+});
+
+// Hero animations (no scroll trigger — immediate)
+const heroEls = document.querySelectorAll('#hero .fade-up');
+heroEls.forEach((el, i) => {
+  gsap.to(el, {
+    delay: 0.3 + i * 0.18,
+    opacity: 1,
+    y: 0,
+    duration: 1.1,
+    ease: 'power3.out'
+  });
+});
+
+// Animated counters (SEO-safe: DOM starts at final value, animates via sequence)
+document.querySelectorAll('.counter').forEach(el => {
+  const seq = (el.dataset.countSeq || '').split(',').map(Number).filter(n => !isNaN(n));
+  const decimals = parseInt(el.dataset.decimals || '0');
+  if (!seq.length) return;
+
+  // DOM initial = target (index 0) — crawlers see the real number
+  // Animation: step through seq on scroll enter
+  ScrollTrigger.create({
+    trigger: el,
+    start: 'top 85%',
+    once: true,
+    onEnter: () => {
+      let step = 0;
+      const run = () => {
+        if (step >= seq.length) return;
+        const val = seq[step];
+        el.textContent = decimals > 0 ? val.toFixed(decimals) : Math.round(val).toString();
+        step++;
+        if (step < seq.length) setTimeout(run, step === 1 ? 60 : 120);
+      };
+      run();
+    }
+  });
+});
+
+// Nav scroll effect
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.style.background = window.scrollY > 60
+    ? 'rgba(4,13,6,.95)'
+    : 'rgba(4,13,6,.82)';
+}, { passive: true });
+</script>
+</body>
+</html>
