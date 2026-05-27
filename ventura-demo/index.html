@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://venturalandscapehouston.com/">
 <meta property="og:title" content="Ventura Lawn Care — Houston, TX">
 <meta property="og:description" content="Professional lawn care across Houston. Fast, skilled, and clean — guaranteed.">
-<meta property="og:image" content="https://www.landscapinginhoustontx.com/assets/lush-healthy-lawn-houston-tx.png">
+<meta property="og:image" content="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1600&h=900&fit=crop&q=80">
 
 <script type="application/ld+json">
 {
@@ -777,6 +777,73 @@ footer {
   font-weight:300;
 }
 @media(max-width:760px){ .footer-inner { grid-template-columns:1fr; } }
+
+/* ─── MOBILE MENU ─────────────────────────────────────── */
+.mobile-menu {
+  position:fixed;
+  top:0;right:0;bottom:0;
+  width:280px;
+  max-width:80vw;
+  background:var(--surface);
+  border-left:1px solid var(--border);
+  z-index:200;
+  display:flex;
+  flex-direction:column;
+  padding:80px 32px 40px;
+  transform:translateX(100%);
+  transition:transform .35s cubic-bezier(.4,0,.2,1);
+}
+.mobile-menu.open { transform:translateX(0); }
+.mobile-menu-overlay {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  z-index:199;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .35s;
+}
+.mobile-menu-overlay.open { opacity:1; pointer-events:auto; }
+.mobile-menu a {
+  font-family:var(--font-display);
+  font-size:28px;
+  color:var(--text);
+  text-decoration:none;
+  padding:16px 0;
+  border-bottom:1px solid var(--border);
+  transition:color .2s;
+}
+.mobile-menu a:hover { color:var(--primary-light); }
+.mobile-menu .mobile-cta {
+  margin-top:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-family:var(--font-body);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--bg);
+  background:var(--primary);
+  padding:16px 28px;
+  border-radius:var(--radius);
+  text-decoration:none;
+  border:none;
+  font-style:normal;
+}
+.mobile-menu-close {
+  position:absolute;
+  top:18px;right:20px;
+  background:none;
+  border:none;
+  color:var(--text-muted);
+  cursor:pointer;
+  transition:color .2s;
+}
+.mobile-menu-close:hover { color:var(--text); }
+
 </style>
 </head>
 <body class="grain">
@@ -801,11 +868,25 @@ footer {
   </button>
 </nav>
 
+<!-- MOBILE MENU -->
+<div class="mobile-menu-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileClose" aria-label="Close menu">
+    <i data-lucide="x" style="width:24px;height:24px;"></i>
+  </button>
+  <a href="#services" class="mobile-menu-link">Services</a>
+  <a href="#reviews" class="mobile-menu-link">Reviews</a>
+  <a href="#areas" class="mobile-menu-link">Service Areas</a>
+  <a href="#cta" class="mobile-menu-link">Contact</a>
+  <a href="#cta" class="mobile-cta">Book a Visit</a>
+</div>
+
+
 <!-- HERO -->
 <section id="hero">
   <img
     class="hero-img"
-    src="https://www.landscapinginhoustontx.com/assets/lush-healthy-lawn-houston-tx.png"
+    src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1600&h=900&fit=crop&q=80"
     alt="Lush green lawn maintained by Ventura Lawn Care in Houston TX"
     width="1200"
     height="685"
@@ -1177,6 +1258,37 @@ window.addEventListener('scroll', () => {
     ? 'rgba(4,13,6,.95)'
     : 'rgba(4,13,6,.82)';
 }, { passive: true });
+
+
+// Mobile menu toggle
+const mobileToggle = document.querySelector('.nav-mobile-toggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileOverlay = document.getElementById('mobileOverlay');
+const mobileClose = document.getElementById('mobileClose');
+
+function openMenu() {
+  mobileMenu.classList.add('open');
+  mobileOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu() {
+  mobileMenu.classList.remove('open');
+  mobileOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+mobileToggle.addEventListener('click', openMenu);
+mobileClose.addEventListener('click', closeMenu);
+mobileOverlay.addEventListener('click', closeMenu);
+
+// Close on link click
+document.querySelectorAll('.mobile-menu-link').forEach(link => {
+  link.addEventListener('click', closeMenu);
+});
+
+// Re-init lucide for new icons
+lucide.createIcons();
+
 </script>
 </body>
 </html>
