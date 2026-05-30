@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ottine — A Proposal for the Next Decade of Visibility</title>
+<meta name="description" content="Why your current site is invisible to AI search, what we built to fix it, and what the next 12 months look like on retainer." />
+<meta name="robots" content="noindex,nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{--forest:#2F3B2F;--sage:#7D8B6A;--cream:#F5F0E6;--stone:#D4C5B0;--terracotta:#C4573A;--ink:#1F2A1F;--muted:#5C6952;--paper:#FBF8F1}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased}
+.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;letter-spacing:-0.02em;line-height:1.1}
+.eyebrow{font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage);font-weight:500}
+.container{max-width:980px;margin:0 auto;padding:0 28px}
+a{color:var(--terracotta);text-decoration:none;border-bottom:1px solid rgba(196,87,58,0.3);transition:all .2s}
+a:hover{border-bottom-color:var(--terracotta)}
+
+/* Masthead */
+.masthead{border-bottom:1px solid rgba(47,59,47,0.15);padding:32px 0;background:var(--cream)}
+.masthead-inner{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px}
+.masthead .brand{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--forest)}
+.masthead .brand span{color:var(--terracotta)}
+.masthead .meta{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
+
+/* Hero */
+.hero{padding:96px 0 80px;background:var(--cream);border-bottom:1px solid rgba(47,59,47,0.1)}
+.hero h1{font-size:clamp(42px,6vw,72px);color:var(--forest);margin:20px 0 28px;max-width:860px}
+.hero-lede{font-size:21px;color:var(--muted);max-width:680px;line-height:1.55}
+.hero-lede b{color:var(--ink);font-weight:500}
+
+/* Section base */
+section{padding:96px 0;border-bottom:1px solid rgba(47,59,47,0.1)}
+section h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,44px);color:var(--forest);margin:14px 0 28px;letter-spacing:-0.02em;line-height:1.15}
+section .lead{font-size:19px;color:var(--muted);max-width:680px;margin-bottom:48px;line-height:1.55}
+
+/* Receipts (the killer schema proof) */
+.receipts{background:var(--forest);color:var(--cream)}
+.receipts h2,.receipts .eyebrow{color:var(--cream)}
+.receipts .eyebrow{color:var(--stone)}
+.receipts .lead{color:rgba(245,240,230,0.85)}
+.receipt-card{background:rgba(245,240,230,0.05);border:1px solid rgba(212,197,176,0.18);padding:32px;margin:24px 0;border-radius:2px;font-family:ui-monospace,'SF Mono',monospace;font-size:14px;line-height:1.6;color:var(--stone)}
+.receipt-card .label{color:var(--terracotta);font-weight:500;font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:8px;display:block}
+.receipt-card .body{color:var(--cream);font-size:15px}
+.receipt-card .body s{color:rgba(245,240,230,0.4)}
+.receipt-card .body em{color:var(--terracotta);font-style:normal;font-weight:600}
+
+/* Two-col */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.col h3{font-family:'Playfair Display',serif;font-size:24px;color:var(--forest);margin-bottom:16px}
+.col p{color:var(--muted);font-size:16px;line-height:1.7}
+.col ul{list-style:none;margin-top:12px}
+.col li{padding:8px 0;color:var(--ink);font-size:15px;border-bottom:1px solid rgba(47,59,47,0.08);display:flex;justify-content:space-between;gap:16px}
+.col li::before{content:'→ ';color:var(--terracotta);margin-right:8px}
+.col.before li::before{content:'✕ ';color:#9F2F2D}
+.col.after li::before{content:'✓ ';color:#346538}
+
+/* Tiers */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.tier{background:#fff;border:1px solid rgba(47,59,47,0.12);padding:36px 28px;border-radius:2px;position:relative;transition:all .25s}
+.tier.featured{border-color:var(--terracotta);border-width:2px;transform:translateY(-8px);box-shadow:0 16px 32px -16px rgba(47,59,47,0.15)}
+.tier.featured::before{content:'Recommended';position:absolute;top:-12px;left:24px;background:var(--terracotta);color:var(--cream);padding:4px 14px;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500}
+.tier-name{font-family:'Playfair Display',serif;font-size:24px;color:var(--forest);font-weight:600}
+.tier-price{font-family:'Playfair Display',serif;font-size:42px;color:var(--forest);font-weight:600;margin:16px 0 4px;letter-spacing:-0.02em}
+.tier-price span{font-size:14px;color:var(--muted);font-weight:400;letter-spacing:0.04em}
+.tier-tag{font-size:13px;color:var(--muted);margin-bottom:24px}
+.tier ul{list-style:none}
+.tier li{padding:10px 0;border-top:1px solid rgba(47,59,47,0.08);font-size:14px;color:var(--ink);line-height:1.5}
+.tier li:first-child{border-top:none}
+.tier li::before{content:'✓';color:var(--terracotta);margin-right:10px;font-weight:600}
+
+/* Timeline */
+.phases{margin-top:32px}
+.phase{display:grid;grid-template-columns:80px 1fr;gap:32px;padding:32px 0;border-top:1px solid rgba(47,59,47,0.08)}
+.phase:first-child{border-top:none}
+.phase-num{font-family:'Playfair Display',serif;font-size:48px;color:var(--terracotta);font-weight:600;letter-spacing:-0.02em;line-height:1}
+.phase-body h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--forest);margin-bottom:8px}
+.phase-body p{color:var(--muted);font-size:16px;line-height:1.65}
+
+/* CTA */
+.cta{background:var(--forest);color:var(--cream);text-align:center;padding:96px 28px}
+.cta h2{color:var(--cream);font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,48px);margin-bottom:24px}
+.cta p{color:rgba(245,240,230,0.82);max-width:620px;margin:0 auto 40px;font-size:18px}
+.cta-btn{display:inline-block;background:var(--terracotta);color:var(--cream);padding:18px 40px;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;border-radius:2px;border:none;cursor:pointer;transition:all .25s}
+.cta-btn:hover{background:var(--cream);color:var(--forest)}
+
+footer{background:#1a221a;color:rgba(245,240,230,0.6);padding:48px 0;font-size:13px;text-align:center}
+
+@media (max-width:780px){
+  section{padding:64px 0}
+  .two-col{grid-template-columns:1fr;gap:32px}
+  .tiers{grid-template-columns:1fr;gap:32px}
+  .tier.featured{transform:none}
+  .phase{grid-template-columns:1fr;gap:8px}
+  .phase-num{font-size:32px}
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="container masthead-inner">
+    <div class="brand">Generative<span>·</span>Jesse</div>
+    <div class="meta">A Proposal for Ottine Mineral Springs · 2026</div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">The Pitch</div>
+    <h1 class="serif">You have a 117-year-old story.<br>It's invisible to the way people search in 2026.</h1>
+    <p class="hero-lede">Your current site is well-written, on-brand, and built on Yoast — so the foundations are there. But <b>the new search layer (ChatGPT, Perplexity, Claude, Google AI Overviews) reads structured signals your site doesn't expose</b>. The result: when someone asks an AI assistant for "mineral springs near Austin" or "Japanese onsen in the US," you don't appear. Here's the diagnosis, the demo we built, and what the next twelve months look like.</p>
+  </div>
+</header>
+
+<section class="receipts">
+  <div class="container">
+    <div class="eyebrow">Receipt 1</div>
+    <h2>The wrong number is baked into your schema.</h2>
+    <p class="lead">Your site's JSON-LD — the data layer AI assistants read first — has the wrong callback number. ChatGPT and Perplexity are citing 830-312-9266 to anyone asking. The number on your actual page is 830-250-4686. We caught this in the audit; we fixed it in the demo.</p>
+
+    <div class="receipt-card">
+      <span class="label">From your live source</span>
+      <div class="body">
+        Schema (what AI assistants read): <s>830-312-9266</s><br>
+        Phone link on your page: <em>830-250-4686</em>
+      </div>
+    </div>
+
+    <div class="eyebrow" style="margin-top:48px">Receipt 2</div>
+    <h2 style="font-size:clamp(28px,3.5vw,38px)">Your robots.txt blocks the AI crawlers that matter.</h2>
+    <p class="lead">No allowlist for GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot, or anthropic-ai. Yoast got you 30% of the way on Google. The other 70% — the AI search layer — has no instructions to follow.</p>
+
+    <div class="receipt-card">
+      <span class="label">Your current robots.txt</span>
+      <div class="body">
+        GPTBot: <s>not mentioned</s> · ClaudeBot: <s>not mentioned</s><br>
+        PerplexityBot: <s>not mentioned</s> · CCBot: <s>not mentioned</s><br>
+        <em>llms.txt: 404 — no structured context file exists</em>
+      </div>
+    </div>
+
+    <div class="eyebrow" style="margin-top:48px">Receipt 3</div>
+    <h2 style="font-size:clamp(28px,3.5vw,38px)">Your story doesn't live anywhere AI can find it.</h2>
+    <p class="lead">Howard Hughes Sr. drilling for oil. The only desegregated polio care facility in the United States. 117 continuous years of mineral water. None of this is in a structured form an AI assistant can cite. The story is your moat — and it's locked in a brochure.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">The Demo</div>
+    <h2>What we built — live for 7 days.</h2>
+    <p class="lead">A complete redesign at <a href="https://ottine-mineral-springs-demo.vercel.app">ottine-mineral-springs-demo.vercel.app</a> using your real photography, your existing voice ("GO SOAK," "soak at the source"), your actual pricing, the correct phone number, and a full AI-search infrastructure layer. The history section is structured the way an AI assistant can read and cite it.</p>
+
+    <div class="two-col">
+      <div class="col before">
+        <h3>What you have today</h3>
+        <ul>
+          <li>Thin DaySpa JSON-LD via Yoast</li>
+          <li>Wrong phone in schema</li>
+          <li>No llms.txt</li>
+          <li>No AI crawler allowlist</li>
+          <li>History buried in brochures</li>
+          <li>No FAQ schema for AI search queries</li>
+          <li>No geo coordinates exposed</li>
+          <li>No amenityFeature structured data</li>
+        </ul>
+      </div>
+      <div class="col after">
+        <h3>What the demo ships</h3>
+        <ul>
+          <li>Full LocalBusiness + Spa + HealthAndBeautyBusiness + TouristAttraction schema</li>
+          <li>Correct phone everywhere</li>
+          <li>llms.txt with structured context</li>
+          <li>Allowlist: GPTBot, ClaudeBot, Perplexity, anthropic-ai, CCBot</li>
+          <li>1909 history as readable timeline</li>
+          <li>5-question FAQ schema targeting your search cluster</li>
+          <li>Geo coordinates, opening hours, price range</li>
+          <li>Amenity features (pools, sauna, dining, yoga)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream)">
+  <div class="container">
+    <div class="eyebrow">The Engagement</div>
+    <h2>One-time build, then a retainer that compounds.</h2>
+    <p class="lead">The site itself is the smaller cost. The real value is the recurring infrastructure that keeps you ahead as AI search calcifies its citation patterns over the next 12–18 months.</p>
+
+    <div class="tiers">
+      <div class="tier">
+        <div class="tier-name">Foundation</div>
+        <div class="tier-price">$397<span>/mo</span></div>
+        <div class="tier-tag">Stay current, stay correct</div>
+        <ul>
+          <li>Site uptime + maintenance</li>
+          <li>Quarterly schema refresh</li>
+          <li>GBP optimization + monitoring</li>
+          <li>Review automation</li>
+          <li>Hours/pricing/menu updates included</li>
+        </ul>
+      </div>
+      <div class="tier featured">
+        <div class="tier-name">Growth</div>
+        <div class="tier-price">$797<span>/mo</span></div>
+        <div class="tier-tag">AI search infrastructure + content authority</div>
+        <ul>
+          <li>Everything in Foundation</li>
+          <li>llms.txt maintained + extended</li>
+          <li>AI crawler allowlist monitored</li>
+          <li>Quarterly AI-visibility audit across ChatGPT, Perplexity, Claude, Gemini</li>
+          <li>FAQ + content schema expansion</li>
+          <li>Local link building (Texas wellness press)</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Dominate</div>
+        <div class="tier-price">$1,497<span>/mo</span></div>
+        <div class="tier-tag">Own the corridor</div>
+        <ul>
+          <li>Everything in Growth</li>
+          <li>Corridor landing pages (Austin, SA, Houston)</li>
+          <li>Editorial press campaigns</li>
+          <li>Soak Planner AI feature build (V2)</li>
+          <li>Custom AI-cited content quarterly</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top:48px;color:var(--muted);font-size:15px;text-align:center"><b>One-time build:</b> $2,497 · Includes the redesigned site, complete schema, llms.txt, AI crawler allowlist, FAQ infrastructure, GBP optimization, and 30 days of refinement. Bundled into month 1 of any retainer.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">The Timeline</div>
+    <h2>What twelve months look like.</h2>
+
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-num">01</div>
+        <div class="phase-body">
+          <h3>Month 1 — Foundation Ship</h3>
+          <p>Launch the redesigned site. Complete schema deployment. llms.txt live. AI crawler allowlist in place. GBP optimized. Right number everywhere. Initial AI visibility baseline captured across ChatGPT, Perplexity, Claude, Gemini.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">02</div>
+        <div class="phase-body">
+          <h3>Months 2–4 — Authority Build</h3>
+          <p>Extended content layer: history page, water science page, contrast therapy protocol page — each independently citable. Local link building through Texas wellness press. Review automation kicks in.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">03</div>
+        <div class="phase-body">
+          <h3>Months 5–8 — Corridor Expansion</h3>
+          <p>Landing pages for Austin, San Antonio, and Houston traffic — each AI-citable for "mineral springs near [city]" queries. Editorial press campaign. AI visibility re-audit; expect first major movement here.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">04</div>
+        <div class="phase-body">
+          <h3>Months 9–12 — Compound</h3>
+          <p>By month 9, AI assistants have indexed and started citing the structured content layer. We measure, iterate, and expand. V2 Soak Planner feature deploys if on Dominate tier.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>The first-mover window is open.<br>It closes when AI citation patterns calcify.</h2>
+  <p>Most Texas spas have done zero AI-search work. The ones that move in the next 6 months will be the ones AI assistants cite by default for the next decade. Ottine has the story, the history, and the credibility. What's missing is the infrastructure that lets the new search layer read it.</p>
+  <a href="mailto:generative.jesse@gmail.com?subject=Ottine Mineral Springs — Let's talk" class="cta-btn">Let's Talk</a>
+  <p style="margin-top:32px;font-size:13px;color:rgba(245,240,230,0.5);letter-spacing:0.04em">Demo at <a href="https://ottine-mineral-springs-demo.vercel.app" style="color:var(--stone);border-bottom-color:rgba(212,197,176,0.4)">ottine-mineral-springs-demo.vercel.app</a> · Live for 7 days</p>
+</section>
+
+<footer>
+  <div class="container">
+    Independent proposal · Not affiliated with Ottine Mineral Springs · Built by Generative Jesse Studio · 2026
+  </div>
+</footer>
+
+</body>
+</html>
