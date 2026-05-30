@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ottine Mineral Springs — Texas Magic Waters Since 1909</title>
+<meta name="description" content="Soak at the source. Three mineral pools, full-service spa, contrast therapy, and a 1909 origin story between Austin, San Antonio, and Houston." />
+<link rel="canonical" href="https://studio.generativejesse.com/ottine-mineral-springs-demo/" />
+<meta property="og:title" content="Ottine Mineral Springs — Texas Magic Waters Since 1909" />
+<meta property="og:description" content="Soak at the source. Three mineral pools, full-service spa, contrast therapy." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://ottinemineralsprings.com/wp-content/uploads/2024/11/hero-2048x1365.jpeg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --forest:#2F3B2F; --sage:#7D8B6A; --cream:#F5F0E6; --stone:#D4C5B0; --terracotta:#C4573A;
+  --ink:#1F2A1F; --muted:#5C6952;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;letter-spacing:-0.02em;line-height:1.1}
+.eyebrow{font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage);font-weight:500}
+.container{max-width:1240px;margin:0 auto;padding:0 28px}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* Banner */
+.banner{background:var(--forest);color:var(--cream);text-align:center;padding:10px 16px;font-size:13px;letter-spacing:0.04em}
+.banner b{color:var(--terracotta);font-weight:600}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(245,240,230,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(47,59,47,0.08)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1240px;margin:0 auto}
+.logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;color:var(--forest)}
+.logo span{color:var(--terracotta)}
+.nav-links{display:flex;gap:32px;font-size:14px;letter-spacing:0.05em;text-transform:uppercase}
+.nav-links a:hover{color:var(--terracotta)}
+.nav-cta{background:var(--forest);color:var(--cream);padding:12px 22px;border-radius:2px;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;transition:all .2s}
+.nav-cta:hover{background:var(--terracotta)}
+
+/* Hero */
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-img{position:absolute;inset:0;background:url('https://img.texasmonthly.com/2025/05/ottine-mineral-springs-1.jpg') center/cover;filter:brightness(0.7)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(47,59,47,0.15) 0%,rgba(47,59,47,0.65) 100%)}
+.hero-content{position:relative;padding:80px 0;color:var(--cream);max-width:780px}
+.hero h1{font-size:clamp(48px,7vw,92px);margin:24px 0 28px}
+.hero-sub{font-size:clamp(17px,1.6vw,21px);max-width:560px;opacity:0.92;margin-bottom:36px}
+.hero-cta{display:inline-flex;align-items:center;gap:14px;background:var(--terracotta);color:var(--cream);padding:16px 32px;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;border-radius:2px;transition:all .25s}
+.hero-cta:hover{background:var(--cream);color:var(--forest)}
+.hero-meta{position:absolute;right:28px;bottom:80px;color:var(--cream);text-align:right;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;opacity:0.85}
+.hero-meta div{margin:4px 0}
+
+/* Section base */
+section{padding:120px 0;border-bottom:1px solid rgba(47,59,47,0.08)}
+.section-head{max-width:780px;margin-bottom:64px}
+.section-head h2{font-size:clamp(36px,4.5vw,56px);margin:16px 0 20px;color:var(--forest)}
+.section-head p{font-size:18px;color:var(--muted);max-width:620px}
+
+/* Waters - the science */
+.waters{background:var(--forest);color:var(--cream)}
+.waters .eyebrow{color:var(--stone)}
+.waters .section-head h2{color:var(--cream)}
+.waters .section-head p{color:rgba(245,240,230,0.78)}
+.waters-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:48px;margin-top:32px}
+.stat{border-top:1px solid rgba(212,197,176,0.25);padding-top:24px}
+.stat-num{font-family:'Playfair Display',serif;font-size:48px;color:var(--terracotta);font-weight:600;letter-spacing:-0.02em}
+.stat-label{font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone);margin-top:8px}
+.stat-desc{font-size:15px;color:rgba(245,240,230,0.78);margin-top:12px}
+.protocol{margin-top:80px;padding:48px;border:1px solid rgba(212,197,176,0.2);background:rgba(245,240,230,0.04)}
+.protocol h3{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:24px;color:var(--cream)}
+.protocol ol{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;counter-reset:step}
+.protocol li{counter-increment:step;position:relative;padding-left:48px}
+.protocol li::before{content:counter(step,decimal-leading-zero);position:absolute;left:0;top:-4px;font-family:'Playfair Display',serif;font-size:28px;color:var(--terracotta)}
+.protocol-step{font-weight:500;color:var(--cream);font-size:16px}
+.protocol-time{font-size:13px;color:var(--stone);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px}
+
+/* Experience */
+.experience-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;margin-top:32px}
+.exp-card{position:relative;overflow:hidden;border-radius:2px;background:var(--stone)}
+.exp-card.large{grid-column:span 7;aspect-ratio:4/3}
+.exp-card.med{grid-column:span 5;aspect-ratio:4/3}
+.exp-card.wide{grid-column:span 12;aspect-ratio:16/6}
+.exp-card.small{grid-column:span 6;aspect-ratio:1/1}
+.exp-card img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.exp-card:hover img{transform:scale(1.04)}
+.exp-card-label{position:absolute;left:24px;bottom:24px;color:var(--cream);background:rgba(47,59,47,0.78);padding:10px 18px;backdrop-filter:blur(8px);font-size:13px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500}
+
+/* History */
+.history{background:var(--stone)}
+.history-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:start}
+.timeline{border-left:1px solid rgba(47,59,47,0.2);padding-left:36px}
+.timeline-entry{margin-bottom:48px;position:relative}
+.timeline-entry::before{content:'';position:absolute;left:-43px;top:8px;width:13px;height:13px;border-radius:50%;background:var(--terracotta);border:2px solid var(--stone)}
+.timeline-year{font-family:'Playfair Display',serif;font-size:32px;color:var(--forest);font-weight:600;letter-spacing:-0.02em}
+.timeline-title{font-weight:500;color:var(--forest);margin-top:4px;font-size:17px}
+.timeline-body{color:var(--muted);font-size:15px;margin-top:8px;line-height:1.65}
+.history-aside img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2px}
+.history-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:22px;color:var(--forest);margin-top:32px;line-height:1.4;padding-left:24px;border-left:3px solid var(--terracotta)}
+
+/* Plan */
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:48px;margin-top:32px}
+.plan-block h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--forest);margin-bottom:16px}
+.plan-block ul{list-style:none}
+.plan-block li{padding:10px 0;border-bottom:1px solid rgba(47,59,47,0.1);display:flex;justify-content:space-between;font-size:15px;color:var(--ink)}
+.plan-block li span{color:var(--muted)}
+.plan-cta{margin-top:64px;display:flex;gap:20px;flex-wrap:wrap}
+.btn-primary{background:var(--forest);color:var(--cream);padding:18px 36px;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;border-radius:2px;transition:all .25s;border:none;cursor:pointer}
+.btn-primary:hover{background:var(--terracotta)}
+.btn-secondary{background:transparent;color:var(--forest);padding:18px 36px;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;border:1px solid var(--forest);transition:all .25s}
+.btn-secondary:hover{background:var(--forest);color:var(--cream)}
+
+/* V2 Teaser */
+.v2{background:var(--forest);color:var(--cream);padding:80px 0}
+.v2-inner{max-width:920px;margin:0 auto;text-align:center;padding:0 28px}
+.v2 .eyebrow{color:var(--terracotta)}
+.v2 h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,48px);margin:16px 0 24px;color:var(--cream)}
+.v2 p{color:rgba(245,240,230,0.82);max-width:640px;margin:0 auto 32px;font-size:17px}
+.v2-badge{display:inline-block;background:rgba(196,87,58,0.15);color:var(--terracotta);padding:8px 16px;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;border:1px solid rgba(196,87,58,0.4);border-radius:2px}
+
+/* Footer */
+footer{background:#1a221a;color:rgba(245,240,230,0.7);padding:64px 0 32px}
+.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:48px;margin-bottom:48px}
+.foot-grid h4{color:var(--cream);font-family:'Playfair Display',serif;font-size:18px;margin-bottom:16px}
+.foot-grid p,.foot-grid a{font-size:14px;line-height:1.8;color:rgba(245,240,230,0.7)}
+.foot-grid a:hover{color:var(--terracotta)}
+.foot-base{border-top:1px solid rgba(245,240,230,0.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;letter-spacing:0.05em;color:rgba(245,240,230,0.5)}
+
+/* Disclaimer */
+.disclaimer{background:var(--terracotta);color:var(--cream);text-align:center;padding:14px 16px;font-size:12px;letter-spacing:0.06em}
+.disclaimer b{font-weight:600}
+
+@media (max-width:880px){
+  .nav-links{display:none}
+  .hero{min-height:75vh}
+  .hero-meta{display:none}
+  section{padding:72px 0}
+  .history-grid{grid-template-columns:1fr;gap:48px}
+  .exp-card.large,.exp-card.med,.exp-card.small{grid-column:span 12;aspect-ratio:4/3}
+  .protocol{padding:32px 24px}
+}
+@media (max-width:480px){
+  .container,.nav-inner{padding-left:20px;padding-right:20px}
+  .hero-content{padding:60px 0}
+  .protocol ol{grid-template-columns:1fr;gap:24px}
+}
+</style>
+</head>
+<body>
+
+<div class="disclaimer">
+<b>Independent concept demo</b> — not affiliated with Ottine Mineral Springs. Built by Generative Jesse · Live for 7 days.
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">Ottine<span>·</span>1909</a>
+    <nav class="nav-links">
+      <a href="#waters">The Waters</a>
+      <a href="#experience">Experience</a>
+      <a href="#history">History</a>
+      <a href="#plan">Plan Your Visit</a>
+    </nav>
+    <a href="#plan" class="nav-cta">Reserve</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="eyebrow" style="color:var(--stone)">Est. 1909 · Gonzales, Texas</div>
+    <h1 class="serif">Texas Magic Waters.<br>Soak at the Source.</h1>
+    <p class="hero-sub">Three mineral pools fed by the Carrizo-Wilcox aquifer 106°F at the wellhead. Full-service spa, contrast therapy, and a story older than most of Texas wellness. Relax. Restore. Revitalize.</p>
+    <a href="#plan" class="hero-cta">Go Soak →</a>
+  </div>
+  <div class="hero-meta">
+    <div>45 min from San Antonio</div>
+    <div>~100 mi from Austin · Houston</div>
+    <div>Tue–Sun · 9 AM – 8 PM</div>
+  </div>
+</section>
+
+<section class="waters" id="waters">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">The Waters</div>
+      <h2 class="serif">Drawn from 1,300 feet below Texas.</h2>
+      <p>In 1909, wildcatters — including Howard Hughes Sr. — drilled for oil and hit something rarer. The Carrizo-Wilcox aquifer surfaces here at 106°F, mineral-rich and naturally alkaline. The same water that built a wellness sanctuary a century ago still flows today.</p>
+    </div>
+
+    <div class="waters-grid">
+      <div class="stat">
+        <div class="stat-num">106°</div>
+        <div class="stat-label">Wellhead temperature</div>
+        <div class="stat-desc">Geothermally heated by 1,300 feet of Texas earth.</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">8.37</div>
+        <div class="stat-label">pH · Alkaline</div>
+        <div class="stat-desc">Soft, mineral-balanced, naturally buffered.</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7</div>
+        <div class="stat-label">Trace minerals</div>
+        <div class="stat-desc">Bicarbonate · Sodium · Chloride · Sulfate · Carbonate · Silica · Iron.</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Pools</div>
+        <div class="stat-desc">Swimming pool · 100°F warm pool · 104°F hot pool · cold plunge · sauna.</div>
+      </div>
+    </div>
+
+    <div class="protocol">
+      <h3>The Contrast Therapy Protocol</h3>
+      <ol>
+        <li>
+          <div class="protocol-step">Heat</div>
+          <div class="protocol-time">10–20 minutes</div>
+        </li>
+        <li>
+          <div class="protocol-step">Cold Plunge</div>
+          <div class="protocol-time">10 seconds – 3 minutes</div>
+        </li>
+        <li>
+          <div class="protocol-step">Rest</div>
+          <div class="protocol-time">Until breath returns</div>
+        </li>
+        <li>
+          <div class="protocol-step">Repeat</div>
+          <div class="protocol-time">2–4 cycles</div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">The Experience</div>
+      <h2 class="serif">Pools, spa, table, and stillness — all on the property.</h2>
+      <p>A day at Ottine isn't a treatment list. It's a rhythm: soak, eat, walk, soak again. Designed for unhurried hours.</p>
+    </div>
+
+    <div class="experience-grid">
+      <div class="exp-card large">
+        <img src="https://austin.culturemap.com/media-library/ottine-mineral-springs-from-above.jpg" alt="Aerial view of Ottine Mineral Springs pools and grounds" loading="lazy" />
+        <div class="exp-card-label">Three Mineral Pools</div>
+      </div>
+      <div class="exp-card med">
+        <img src="https://tribeza.com/wp-content/uploads/2025/05/OttineMineralSprings.MS-971-scaled.jpg" alt="Spa treatment room with soft lighting" loading="lazy" />
+        <div class="exp-card-label">Full-Service Spa</div>
+      </div>
+      <div class="exp-card wide">
+        <img src="https://ottinemineralsprings.com/wp-content/uploads/2024/11/hero-2048x1365.jpeg" alt="Mineral pool at golden hour" loading="lazy" />
+        <div class="exp-card-label">Poolside Dining · Wood-Fired Pizza · Wine</div>
+      </div>
+      <div class="exp-card small">
+        <img src="https://img.texasmonthly.com/2025/05/ottine-mineral-springs-1.jpg" alt="Mineral water surface detail" loading="lazy" />
+        <div class="exp-card-label">Movement &amp; Yoga</div>
+      </div>
+      <div class="exp-card small">
+        <img src="https://austin.culturemap.com/media-library/ottine-mineral-springs-from-above.jpg" alt="Palmetto State Park trail adjacent to property" loading="lazy" />
+        <div class="exp-card-label">Adjacent · Palmetto State Park</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="history" id="history">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">The History</div>
+      <h2 class="serif">From oil derrick to polio ward to wellness sanctuary.</h2>
+    </div>
+
+    <div class="history-grid">
+      <div class="timeline">
+        <div class="timeline-entry">
+          <div class="timeline-year">1909</div>
+          <div class="timeline-title">The wildcatters strike water.</div>
+          <p class="timeline-body">A drilling crew including Howard Hughes Sr. taps into the Carrizo-Wilcox aquifer searching for oil. What surfaces instead is 106°F mineral water — and the beginning of Ottine.</p>
+        </div>
+        <div class="timeline-entry">
+          <div class="timeline-year">1930s</div>
+          <div class="timeline-title">Gonzales Warm Springs Foundation.</div>
+          <p class="timeline-body">The site becomes the only desegregated polio care facility in the United States. Children of every background receive hydrotherapy in the same waters that draw guests today.</p>
+        </div>
+        <div class="timeline-entry">
+          <div class="timeline-year">1947</div>
+          <div class="timeline-title">A full campus.</div>
+          <p class="timeline-body">Dorms, pools, a school, an auditorium, and a chapel serve over 400 children annually — a community built around the healing waters.</p>
+        </div>
+        <div class="timeline-entry">
+          <div class="timeline-year">Post-Salk</div>
+          <div class="timeline-title">Mission expands.</div>
+          <p class="timeline-body">After the polio vaccine, the foundation shifts to serve children with all physical disabilities — continuing decades of inclusive care.</p>
+        </div>
+        <div class="timeline-entry">
+          <div class="timeline-year">Today</div>
+          <div class="timeline-title">Reopened, restored.</div>
+          <p class="timeline-body">Under new stewardship, Ottine returns as a wellness destination — the same water, the same ground, a new chapter.</p>
+        </div>
+      </div>
+
+      <div class="history-aside">
+        <img src="https://tribeza.com/wp-content/uploads/2025/05/OttineMineralSprings.MS-971-scaled.jpg" alt="Historic and present-day Ottine grounds" />
+        <p class="history-quote">"The water doesn't change. The story does."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="v2">
+  <div class="v2-inner">
+    <div class="v2-badge">Coming in V2</div>
+    <h2>The Soak Planner</h2>
+    <p>Tell us your stress state, your recovery goal, and how many hours you have. The Soak Planner builds your contrast therapy protocol, matches you to the right treatment, and books your time slot — all in one tap.</p>
+    <div class="v2-badge">AI Concierge · 2026</div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Plan Your Visit</div>
+      <h2 class="serif">Reservations only. No walk-ups.</h2>
+      <p>Ottine is designed for unhurried hours — that's only possible when the property knows who's arriving and when. Book ahead, arrive ready.</p>
+    </div>
+
+    <div class="plan-grid">
+      <div class="plan-block">
+        <h3>Hours</h3>
+        <ul>
+          <li>Tuesday – Sunday <span>9 AM – 8 PM</span></li>
+          <li>Monday <span>Closed</span></li>
+          <li>Thursday Evening Special <span>5 – 8 PM · $35</span></li>
+        </ul>
+      </div>
+      <div class="plan-block">
+        <h3>Pricing</h3>
+        <ul>
+          <li>Weekend Half-Day <span>$85 / person</span></li>
+          <li>Thursday Evening <span>$35 / person</span></li>
+          <li>Spa Treatments <span>Reserve direct</span></li>
+        </ul>
+      </div>
+      <div class="plan-block">
+        <h3>Location</h3>
+        <ul>
+          <li>Address <span>2033 FM-1586</span></li>
+          <li>City <span>Gonzales, TX 78629</span></li>
+          <li>Phone <span><a href="tel:830-250-4686" style="color:var(--terracotta)">830-250-4686</a></span></li>
+        </ul>
+      </div>
+      <div class="plan-block">
+        <h3>Distance</h3>
+        <ul>
+          <li>San Antonio <span>~45 min</span></li>
+          <li>Austin <span>~100 mi</span></li>
+          <li>Houston <span>~100 mi</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="plan-cta">
+      <a href="https://ottinemineralsprings.com" class="btn-primary" target="_blank" rel="noopener noreferrer">Reserve Your Soak</a>
+      <a href="tel:830-250-4686" class="btn-secondary">Call 830-250-4686</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <h4>Ottine Mineral Springs</h4>
+        <p>2033 FM-1586<br>Gonzales, TX 78629</p>
+        <p><a href="tel:830-250-4686">830-250-4686</a></p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <p><a href="#waters">The Waters</a></p>
+        <p><a href="#experience">Experience</a></p>
+        <p><a href="#history">History</a></p>
+        <p><a href="#plan">Plan Your Visit</a></p>
+      </div>
+      <div>
+        <h4>The Source</h4>
+        <p>Carrizo-Wilcox aquifer · 106°F · pH 8.37 · 1909 origin.</p>
+        <p>Adjacent to Palmetto State Park.</p>
+      </div>
+      <div>
+        <h4>Demo Disclosure</h4>
+        <p>This is an independent concept demo built by Generative Jesse. Not affiliated with or endorsed by Ottine Mineral Springs. Live for 7 days.</p>
+      </div>
+    </div>
+    <div class="foot-base">
+      <div>© 1909–2026 Ottine Mineral Springs (concept demo)</div>
+      <div>Texas Magic Waters · Soak at the Source</div>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":["LocalBusiness","HealthAndBeautyBusiness","Spa","TouristAttraction"],
+      "@id":"https://studio.generativejesse.com/ottine-mineral-springs-demo/#business",
+      "name":"Ottine Mineral Springs",
+      "description":"Historic Texas mineral springs and spa fed by the Carrizo-Wilcox aquifer at 106°F. Three pools, full-service spa, contrast therapy, dining, and wellness experiences.",
+      "url":"https://ottinemineralsprings.com",
+      "telephone":"+1-830-250-4686",
+      "priceRange":"$35-$150",
+      "image":["https://ottinemineralsprings.com/wp-content/uploads/2024/11/hero-2048x1365.jpeg"],
+      "address":{
+        "@type":"PostalAddress",
+        "streetAddress":"2033 FM-1586",
+        "addressLocality":"Gonzales",
+        "addressRegion":"TX",
+        "postalCode":"78629",
+        "addressCountry":"US"
+      },
+      "geo":{"@type":"GeoCoordinates","latitude":29.580,"longitude":-97.460},
+      "openingHoursSpecification":[
+        {"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Friday","Saturday","Sunday"],"opens":"09:00","closes":"20:00"},
+        {"@type":"OpeningHoursSpecification","dayOfWeek":"Thursday","opens":"09:00","closes":"20:00"}
+      ],
+      "amenityFeature":[
+        {"@type":"LocationFeatureSpecification","name":"Mineral Pools (3)","value":true},
+        {"@type":"LocationFeatureSpecification","name":"Cold Plunge","value":true},
+        {"@type":"LocationFeatureSpecification","name":"Sauna","value":true},
+        {"@type":"LocationFeatureSpecification","name":"Full-Service Spa","value":true},
+        {"@type":"LocationFeatureSpecification","name":"Poolside Dining","value":true},
+        {"@type":"LocationFeatureSpecification","name":"Wood-Fired Pizza","value":true},
+        {"@type":"LocationFeatureSpecification","name":"Yoga & Movement","value":true},
+        {"@type":"LocationFeatureSpecification","name":"Digital Lockers","value":true}
+      ],
+      "foundingDate":"1909",
+      "slogan":"Texas Magic Waters. Soak at the Source.",
+      "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.0","reviewCount":"34"}
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"What are the best mineral springs near Austin, Texas?","acceptedAnswer":{"@type":"Answer","text":"Ottine Mineral Springs in Gonzales, TX is approximately 100 miles from Austin and 45 minutes from San Antonio. Established in 1909, it features three mineral pools fed by the Carrizo-Wilcox aquifer at 106°F, with pH 8.37 alkaline water rich in bicarbonate, sodium, sulfate, and trace minerals."}},
+        {"@type":"Question","name":"Is Ottine Mineral Springs like a Japanese onsen?","acceptedAnswer":{"@type":"Answer","text":"Ottine offers a Texas interpretation of the onsen tradition — natural geothermal mineral water rather than heated tap, with contrast therapy protocols pairing 100–104°F hot pools and cold plunge. Open Tuesday–Sunday by reservation only."}},
+        {"@type":"Question","name":"What is contrast therapy at Ottine?","acceptedAnswer":{"@type":"Answer","text":"The contrast therapy protocol cycles 10–20 minutes in heat (100°F or 104°F mineral pool), 10 seconds to 3 minutes in cold plunge, then rest. Repeat 2–4 cycles to support circulation, recovery, and nervous system regulation."}},
+        {"@type":"Question","name":"How much does Ottine Mineral Springs cost?","acceptedAnswer":{"@type":"Answer","text":"A weekend half-day pass is approximately $85 per person. The Thursday evening special (5–8 PM) is $35. Spa treatments are booked separately. Reservations are required — no walk-ups."}},
+        {"@type":"Question","name":"What's the history of Ottine Mineral Springs?","acceptedAnswer":{"@type":"Answer","text":"Discovered in 1909 by wildcatters including Howard Hughes Sr. drilling for oil. In the 1930s it became the Gonzales Warm Springs Foundation — the only desegregated polio care facility in the United States — serving over 400 children annually. Today it operates under new stewardship as a wellness destination."}}
+      ]
+    }
+  ]
+}
+</script>
+
+</body>
+</html>
